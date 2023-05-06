@@ -116,7 +116,7 @@
 3. Google Chrome
 4. chromedrive (https://chromedriver.chromium.org/downloads)
 ## A tener en cuenta
-Debe actualizar las constantes usuario y contrasena en el archivo __*stepdef.js*__ en las lineas 17 y 18 respoectivamente, por credenciales validas que tenga en su ambiente local para acceder a Ghost.
+Debe actualizar las constantes usuario y contrasena en el archivo __*stepdef.js*__ en las lineas 32 y 33 respoectivamente, por credenciales validas que tenga en su ambiente local para acceder a Ghost.
 ## Pasos
 1. Luego de descargar una copia del proyecto dirijase al directorio root del mismo
 2. Ingrese el comando __*npm install*__ para descargar las dependencias.

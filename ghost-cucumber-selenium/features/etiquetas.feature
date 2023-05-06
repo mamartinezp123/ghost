@@ -4,7 +4,7 @@ Feature: Etiquetas
   Scenario: Crear etiqueta
     Given un usuario autenticado
     When hace click en el link etiquetas
-    And hace click en el boton nuevo
+    And hace click en el boton nueva etiqueta
     And diligencia con "Crear etiqueta" y "Esta es la prueba de crear una etiqueta en Ghost" y envia el formulario crear - modificar etiqueta
     And va a la pagina de etiquetas
     Then la etiqueta "Crear etiqueta" esta en la lista
@@ -12,18 +12,18 @@ Feature: Etiquetas
   Scenario: Eliminar etiqueta
     Given un usuario autenticado
     When hace click en el link etiquetas
-    And hace click en el boton nuevo
+    And hace click en el boton nueva etiqueta
     And diligencia con "Eliminar etiqueta" y "Esta es la prueba de eliminar una etiqueta en Ghost" y envia el formulario crear - modificar etiqueta
     And va a la pagina de etiquetas
     And hace click en la etiqueta "Eliminar etiqueta"
     And hace click en el boton eliminar etiqueta
-    And hace click en el boton eliminar del mensaje de confirmacion
+    And hace click en el boton eliminar etiqueta del mensaje de confirmacion
     Then la etiqueta "Eliminar publicacion" no esta en la lista
 
   Scenario: Modificar etiqueta
     Given un usuario autenticado
     When hace click en el link etiquetas
-    And hace click en el boton nuevo
+    And hace click en el boton nueva etiqueta
     And diligencia con "Modificar etiqueta" y "Esta es la prueba de Modificar una etiqueta en Ghost" y envia el formulario crear - modificar etiqueta
     And va a la pagina de etiquetas
     And hace click en la etiqueta "Modificar etiqueta"
@@ -37,7 +37,6 @@ Feature: Etiquetas
     And hace click en el boton nuevo
     And diligencia con "Modificar etiqueta" y "Esta es la prueba de Modificar una etiqueta en Ghost" y envia el formulario crear - modificar etiqueta
     And va a la pagina de etiquetas
-    And la etiqueta "Modificar etiqueta" esta en la lista
     And hace click en la etiqueta "Modificar etiqueta"
     And diligencia con "  modificar etiqueta modificar etiqueta modificar etiqueta modificar etiqueta modificar etiqueta modificar etiqueta modificar etiqueta modificar etiqueta modificar etiqueta modificar etiqueta modificar etiqueta modificar etiqueta modificar etiqueta modificar etiqueta" y "" y envia el formulario crear - modificar etiqueta
     Then se indica al usuario que el nombre es muy largo

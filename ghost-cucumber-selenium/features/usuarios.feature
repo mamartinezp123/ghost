@@ -5,7 +5,6 @@ Feature: Usuarios
     Given un usuario autenticado
     When hace click en el menu de usuario
     And hace click en la opcion desconectar
-    And va a la pagina de publicaciones
     Then el usuario ya no esta autenticado
 
   Scenario: Regenerar token de usuario
@@ -21,7 +20,6 @@ Feature: Usuarios
     When hace click en el menu de usuario
     And hace click en la opcion tu perfil
     And diligencia con "error" "nueva" y "nueva" el formulario actualizar contrasena
-    And hace click en el boton cambiar contrasena
     Then se indica al usuario que la contraseña es incorrecta
 
   Scenario: Modificar contraseña de usuario con verificacion de contraseña incorrecta
@@ -29,7 +27,6 @@ Feature: Usuarios
     When hace click en el menu de usuario
     And hace click en la opcion tu perfil
     And diligencia con "" "nueva" y "error" el formulario actualizar contrasena
-    And hace click en el boton cambiar contrasena
     Then se indica al usuario que la verificacion de la contraseña es incorrecta
 
   Scenario: Modificar contraseña de usuario con contrasena insegura
@@ -37,7 +34,6 @@ Feature: Usuarios
     When hace click en el menu de usuario
     And hace click en la opcion tu perfil
     And diligencia con "" "1234567890" y "1234567890" el formulario actualizar contrasena
-    And hace click en el boton cambiar contrasena
     Then se indica al usuario que la contraseña es insegura
 
   Scenario: Modificar contrasena de usuario
@@ -45,7 +41,6 @@ Feature: Usuarios
     When hace click en el menu de usuario
     And hace click en la opcion tu perfil
     And diligencia con "" "nueva" y "nueva" el formulario actualizar contrasena
-    And hace click en el boton cambiar contrasena
     And refresca la pagina
     And hace click en el menu de usuario nuevamente
     And hace click en la opcion desconectar
@@ -53,7 +48,6 @@ Feature: Usuarios
     And hace click en el menu de usuario nuevamente
     And hace click en la opcion tu perfil
     And diligencia con "nueva" "" y "" el formulario actualizar contrasena
-    And hace click en el boton cambiar contrasena
     And refresca la pagina
     And hace click en el menu de usuario nuevamente
     And hace click en la opcion desconectar
