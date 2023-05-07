@@ -17,7 +17,9 @@ Pruebas automatizadas de software - Entrega Semana 5
 * [Selenium Tests](https://github.com/mamartinezp123/ghost/tree/master/ghost-cucumber-selenium)
 * [Pros y contras de Selenium](https://github.com/mamartinezp123/ghost/wiki/Pruebas-E2E-con-Selenium )
 
-_**No se encontraron nuevas incidencias**_
+_**En caso de necesitar acceso al repositorio utilizar los siguientes datos usuarioexternouniandes@gmail.com y UniAndes2023*.**_
+
+_**No se encontraron nuevas incidencias.**_
 
 Esperamos disfruten calificando este entretenido repositorio.
 
