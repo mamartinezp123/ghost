@@ -4,7 +4,9 @@ Pruebas automatizadas de software - Semana 5
 Integrantes
 
 Alejandro Martinez
+
 Esteban Ardila
+
 Fernando Garzon
 
 Kraken tests: https://github.com/mamartinezp123/ghost/tree/master/KrakenTests#readme
