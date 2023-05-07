@@ -36,20 +36,9 @@ Feature: Usuarios
     And diligencia con "" "1234567890" y "1234567890" el formulario actualizar contrasena
     Then se indica al usuario que la contraseña es insegura
 
-  Scenario: Modificar contrasena de usuario
+  Scenario: Modificar contrasena de usuario con contrasena vacia
     Given un usuario autenticado
     When hace click en el menu de usuario
     And hace click en la opcion tu perfil
-    And diligencia con "" "nueva" y "nueva" el formulario actualizar contrasena
-    And refresca la pagina
-    And hace click en el menu de usuario nuevamente
-    And hace click en la opcion desconectar
-    And el usuario se autentica con "nueva"
-    And hace click en el menu de usuario nuevamente
-    And hace click en la opcion tu perfil
-    And diligencia con "nueva" "" y "" el formulario actualizar contrasena
-    And refresca la pagina
-    And hace click en el menu de usuario nuevamente
-    And hace click en la opcion desconectar
-    And el usuario se autentica con ""
-    Then el usuario accede a la aplicacion luego de modificar contrasena
+    And diligencia con "" "" y "" el formulario actualizar contrasena
+    Then se indica al usuario que la contraseña no puede estar vacia

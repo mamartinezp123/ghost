@@ -365,6 +365,11 @@ Then(
     }
 );
 
+Then("se indica al usuario que la contraseña no puede estar vacia", async function () {
+    await sleep();
+    assert.equal("Sorry, passwords can't be blank", await paginaUsuario.obtenerErrorCampo(1));
+});
+
 After(async function () {
     await driver.quit();
 });
