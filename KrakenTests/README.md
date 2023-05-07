@@ -91,3 +91,13 @@
 - Modificar contraseña de usuario con verificacion de contraseña incorrecta
 - Modificar contraseña de usuario con contrasena insegura
 - Modificar contrasena de usuario
+
+# Ejecución de las pruebas
+
+- Prerequisitos: Npm, Node.js.
+
+## A tener en cuenta
+
+En este [folder](https://github.com/mamartinezp123/ghost/tree/master/KrakenTests/features) se encuentran especificadas las pruebas. Alli se encuentra el archivo .feature, que al momento en que se hace commit para actualizar este README.md, es ejecucion.feature. El archivo .feature que se encuentre en la carpta features es el que direcciona las pruebas. Dado que kraken presenta prpblemas a la hora de ejecutar pruebas en distintos escenarios en paralelo, se deben correr pruebas sobre un .feature a la vez. Los demas archivos .feature se encuentran en [este folder](https://github.com/mamartinezp123/ghost/tree/master/KrakenTests/features/standBy).
+
+- Una vez instalado kraken usando npm install kraken-node, las pruebas se pruebas se pueden ejecutar en la raiz del proyecto. En este caso, desde este [folder](https://github.com/mamartinezp123/ghost/tree/master/KrakenTests). Las pruebas se corren ejecutando $ kraken-node run, o $ npx kraken-node run.
