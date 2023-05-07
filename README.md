@@ -17,5 +17,7 @@ Wiki documentando pros y contras de cada herramienta: https://github.com/mamarti
 
 Esperamos disfruten calificando este entretenido repositorio.
 
+Sistema de reporte de incidencias (como lo vio en la entrega de la semana 1): https://github.com/mamartinezp123/ghost/issues
+
 
 Muchas Gracias. 
