@@ -14,4 +14,7 @@ Selenium Tests: https://github.com/mamartinezp123/ghost/tree/master/ghost-cucumb
 
 Wiki documentando pros y contras de cada herramienta: https://github.com/mamartinezp123/ghost/wiki
 
-Gracias. Esperamos disfruten calificando este entretenido repositorio.
+Esperamos disfruten calificando este entretenido repositorio.
+
+
+Muchas Gracias. 
