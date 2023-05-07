@@ -10,6 +10,7 @@ Esteban Ardila
 Fernando Garzon
 
 Kraken tests: https://github.com/mamartinezp123/ghost/tree/master/KrakenTests#readme
+
 Selenium Tests: https://github.com/mamartinezp123/ghost/tree/master/ghost-cucumber-selenium
 
 Wiki documentando pros y contras de cada herramienta: https://github.com/mamartinezp123/ghost/wiki
