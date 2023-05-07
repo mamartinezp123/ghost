@@ -90,7 +90,7 @@
 - Modificar contraseña de usuario con contraseña vieja incorrecta
 - Modificar contraseña de usuario con verificacion de contraseña incorrecta
 - Modificar contraseña de usuario con contrasena insegura
-- Modificar contrasena de usuario
+- Modificar contraseña de usuario con contrasena vacia
 
 # Pros y contras de Selenium
 
