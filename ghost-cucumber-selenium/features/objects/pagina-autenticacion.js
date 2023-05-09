@@ -1,5 +1,4 @@
 const {By} = require("selenium-webdriver");
-const PaginaSitio = require("./pagina-sitio");
 
 class PaginaAutenticacion {
 
@@ -16,9 +15,8 @@ class PaginaAutenticacion {
         await this.driver.findElement(this.identificacionBy).sendKeys(identificacion);
         await this.driver.findElement(this.contrasenaBy).sendKeys(contrasena);
         await this.driver.findElement(this.autenticarBy).click();
-        return new PaginaSitio(this.driver);
     }
 
 }
 
-module.exports = PaginaAutenticacion, PaginaSitio;
+module.exports = PaginaAutenticacion;

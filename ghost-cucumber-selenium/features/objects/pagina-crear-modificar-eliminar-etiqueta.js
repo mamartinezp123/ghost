@@ -5,7 +5,7 @@ class PaginaCrearModificarEliminarEtiqueta {
     driver;
     nombreBy = By.css("input[tabindex='1']");
     descripcionBy = By.css("textarea[tabindex='3']");
-    crearModificarBy = By.css(".gh-btn-blue");
+    crearModificarBy = By.css(".view-actions button");
     etiquetasBy = By.css(".gh-canvas-title a");
     eliminarBy = By.css(".gh-canvas .gh-btn-red");
     confirmarEliminarBy = By.css(".modal-footer .gh-btn-red");
@@ -26,6 +26,8 @@ class PaginaCrearModificarEliminarEtiqueta {
     }
 
     async hacerClickEnEliminar() {
+        await this.driver.executeScript("arguments[0].scrollIntoView();", await this.driver.findElement(this.eliminarBy))
+        await this.sleep()
         await this.driver.findElement(this.eliminarBy).click();
     }
 
@@ -33,9 +35,13 @@ class PaginaCrearModificarEliminarEtiqueta {
         await this.driver.findElement(this.confirmarEliminarBy).click();
     }
 
-    async obtenerError(){
+    async obtenerError() {
         let error = await this.driver.findElement(this.errorBy);
         return await error.getText();
+    }
+
+    async sleep() {
+        return new Promise(resolve => setTimeout(resolve, 2000));
     }
 
 }
