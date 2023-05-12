@@ -2,7 +2,7 @@ Feature: Escenarios paginas
 
   @user6 @web
   Scenario: Modificar contraseña de usuario con contrasena insegura
-    Given I navigate to page "http://localhost:2368/ghost/#/signin"
+    Given I navigate to page "http://localhost:3002/ghost/#/signin"
     And I wait for 3 seconds
     And un usuario autenticado
     And I wait for 3 seconds

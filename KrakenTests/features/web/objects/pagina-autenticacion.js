@@ -1,7 +1,6 @@
 const PaginaSitio = require("./pagina-sitio");
 
 class PaginaAutenticacion {
-
     driver;
     identificacionBy = "input[name='identification']";
     contrasenaBy = "input[name='password']";
@@ -16,7 +15,6 @@ class PaginaAutenticacion {
         await this.driver.$(this.contrasenaBy).setValue(contrasena);
         await this.driver.$(this.autenticarBy).click();
     }
-
 }
 
-module.exports = PaginaAutenticacion, PaginaSitio;
+module.exports = { PaginaAutenticacion, PaginaSitio };
