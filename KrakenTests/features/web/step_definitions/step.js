@@ -3,8 +3,9 @@ const assert = require("assert");
 
 const millisecondsToWait = 1200;
 
-const identificacion = "ma.martinezp123@uniandes.edu.co";
-const contrasena = "c-L56kBCAyPxU_u";
+const identificacion = "ce.ardilav1@uniandes.edu.co";
+const contrasena = "**wWzf*zPLD8";
+const baseUrl = 'http://localhost:3002/'
 
 Given(
     "un usuario autenticado",
@@ -240,7 +241,7 @@ Then(
     "el usuario ya no esta autenticado",
     async function () {
         
-        assert.equal("http://localhost:2368/ghost/#/signin", await this.driver.getUrl());
+        assert.equal(`${baseUrl}ghost/#/signin`, await this.driver.getUrl());
     }
 );
 
@@ -313,7 +314,7 @@ When(
     "el usuario se autentica con {string}",
     async function (contrasenaIn) {
         
-        await driver.get("http://localhost:2368/ghost/#/signin");
+        await driver.get(`${baseUrl}ghost/#/signin`);
         await driver.findElement(By.css("input[name='identification']")).sendKeys(usuario);
         await driver.findElement(By.css("input[name='password']")).sendKeys(contrasena + contrasenaIn);
         await driver.findElement(By.css("button[tabindex='3']")).click();
@@ -323,7 +324,7 @@ When(
 Then(
     "el usuario accede a la aplicacion luego de modificar contrasena",
     async function () {
-        assert.equal("http://localhost:2368/ghost/#/site",  this.driver.getUrl());
+        assert.equal(`${baseUrl}ghost/#/site`,  this.driver.getUrl());
     }
 );
 
