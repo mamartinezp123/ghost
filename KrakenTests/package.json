@@ -1,0 +1,14 @@
+{
+    "name": "ghost-kraken-node",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {},
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {},
+    "devDependencies": {
+        "kraken-node": "^1.0.24"
+    }
+}

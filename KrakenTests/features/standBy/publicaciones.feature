@@ -2,7 +2,7 @@ Feature: Escenarios publicacion
 
   @user1 @web
   Scenario: Crear publicacion
-    Given I navigate to page "http://localhost:2368/ghost/#/signin"
+    Given I navigate to page "http://localhost:3002/ghost/#/signin"
     And I wait for 3 seconds
     And un usuario autenticado
     And I wait for 3 seconds
@@ -18,7 +18,7 @@ Feature: Escenarios publicacion
 
   @user2 @web
   Scenario: Eliminar publicacion
-    Given I navigate to page "http://localhost:2368/ghost/#/signin"
+    Given I navigate to page "http://localhost:3002/ghost/#/signin"
     And I wait for 3 seconds
     And un usuario autenticado
     And I wait for 3 seconds
@@ -42,7 +42,7 @@ Feature: Escenarios publicacion
 
   @user3 @web
   Scenario: Modificar publicacion
-    Given I navigate to page "http://localhost:2368/ghost/#/signin"
+    Given I navigate to page "http://localhost:3002/ghost/#/signin"
     And I wait for 3 seconds
     And un usuario autenticado
     And I wait for 3 seconds
@@ -64,7 +64,7 @@ Feature: Escenarios publicacion
 
   @user4 @web
   Scenario: Modificar publicacion con titulo de 285 caracteres
-    Given I navigate to page "http://localhost:2368/ghost/#/signin"
+    Given I navigate to page "http://localhost:3002/ghost/#/signin"
     And I wait for 3 seconds
     And un usuario autenticado
     And I wait for 3 seconds
@@ -84,7 +84,7 @@ Feature: Escenarios publicacion
 
   @user5 @web
   Scenario: Eliminar borrador publicacion
-    Given I navigate to page "http://localhost:2368/ghost/#/signin"
+    Given I navigate to page "http://localhost:3002/ghost/#/signin"
     And I wait for 3 seconds
     And un usuario autenticado
     And I wait for 3 seconds

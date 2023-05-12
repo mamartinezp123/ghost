@@ -1,8 +1,9 @@
 Feature: Etiquetas
   Funcionalidades crear, listar, modificar y eliminar del modulo etiquetas
 
+  @user1 @web
   Scenario: Crear etiqueta
-    Given I navigate to page "http://localhost:2368/ghost/#/signin"
+    Given I navigate to page "http://localhost:3002/ghost/#/signin"
     And I wait for 3 seconds
     And un usuario autenticado
     And I wait for 3 seconds
@@ -16,8 +17,9 @@ Feature: Etiquetas
     And I wait for 3 seconds
     Then la etiqueta "Crear etiqueta" esta en la lista
 
+  @user2 @web
   Scenario: Eliminar etiqueta
-    Given I navigate to page "http://localhost:2368/ghost/#/signin"
+    Given I navigate to page "http://localhost:3002/ghost/#/signin"
     And I wait for 3 seconds
     And un usuario autenticado
     And I wait for 3 seconds
@@ -37,8 +39,9 @@ Feature: Etiquetas
     And I wait for 3 seconds
     Then la etiqueta "Eliminar publicacion" no esta en la lista
 
+  @user3 @web
   Scenario: Modificar etiqueta
-    Given I navigate to page "http://localhost:2368/ghost/#/signin"
+    Given I navigate to page "http://localhost:3002/ghost/#/signin"
     And I wait for 3 seconds
     And un usuario autenticado
     And I wait for 3 seconds
@@ -58,8 +61,9 @@ Feature: Etiquetas
     And I wait for 3 seconds
     Then la etiqueta "Modificar etiqueta actualizada" esta en la lista
 
+  @user4 @web
   Scenario: Modificar etiqueta con titulo de 285 caracteres
-    Given I navigate to page "http://localhost:2368/ghost/#/signin"
+    Given I navigate to page "http://localhost:3002/ghost/#/signin"
     And I wait for 3 seconds
     And un usuario autenticado
     And I wait for 3 seconds

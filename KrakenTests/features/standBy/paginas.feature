@@ -2,7 +2,7 @@ Feature: Escenarios paginas
 
   @user6 @web
   Scenario: Crear pagina
-    Given I navigate to page "http://localhost:2368/ghost/#/signin"
+    Given I navigate to page "http://localhost:3002/ghost/#/signin"
     And I wait for 3 seconds
     And un usuario autenticado
     And I wait for 3 seconds
@@ -18,7 +18,7 @@ Feature: Escenarios paginas
 
   @user7 @web
   Scenario: Eliminar pagina
-    Given I navigate to page "http://localhost:2368/ghost/#/signin"
+    Given I navigate to page "http://localhost:3002/ghost/#/signin"
     And I wait for 3 seconds
     And un usuario autenticado
     And I wait for 3 seconds
@@ -42,7 +42,7 @@ Feature: Escenarios paginas
 
   @user8 @web
   Scenario: Modificar pagina
-    Given I navigate to page "http://localhost:2368/ghost/#/signin"
+    Given I navigate to page "http://localhost:3002/ghost/#/signin"
     And I wait for 3 seconds
     And un usuario autenticado
     And I wait for 3 seconds
@@ -64,7 +64,7 @@ Feature: Escenarios paginas
 
   @user9 @web
   Scenario: Modificar pagina con titulo de 285 caracteres
-    Given I navigate to page "http://localhost:2368/ghost/#/signin"
+    Given I navigate to page "http://localhost:3002/ghost/#/signin"
     And I wait for 3 seconds
     And un usuario autenticado
     And I wait for 3 seconds
@@ -84,7 +84,7 @@ Feature: Escenarios paginas
 
   @user10 @web
   Scenario: Eliminar borrador pagina
-    Given I navigate to page "http://localhost:2368/ghost/#/signin"
+    Given I navigate to page "http://localhost:3002/ghost/#/signin"
     And I wait for 3 seconds
     And un usuario autenticado
     And I wait for 3 seconds
