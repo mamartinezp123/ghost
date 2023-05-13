@@ -8,8 +8,9 @@ class PaginaCrearModificarEliminarElemento {
     menuBy = By.css(".gh-publishmenu");
     crearModificarBy = By.css(".gh-publishmenu-button");
     elementosBy = By.css(".gh-editor-header a");
-    ajustesBy = By.css(".post-settings");
+    ajustesBy = By.css("button[title='Settings']");
     eliminarBy = By.css(".gh-btn-hover-red");
+    confirmarCrearBy = By.css(".modal-footer .gh-btn-black");
     confirmarEliminarBy = By.css(".modal-footer .gh-btn-red");
     errorBy = By.css("article div");
 
@@ -34,10 +35,12 @@ class PaginaCrearModificarEliminarElemento {
     }
 
     async hacerClickEnAjustes() {
-        await this.driver.findElement(this.ajustesBy).click();
+            await this.driver.findElement(this.ajustesBy).click();
     }
 
     async hacerClickEnEliminar() {
+        await this.driver.executeScript("arguments[0].scrollIntoView();", await this.driver.findElement(this.eliminarBy))
+        await this.sleep();
         await this.driver.findElement(this.eliminarBy).click();
     }
 
@@ -45,9 +48,17 @@ class PaginaCrearModificarEliminarElemento {
         await this.driver.findElement(this.confirmarEliminarBy).click();
     }
 
+    async hacerClickEnConfirmarCrear() {
+        await this.driver.findElement(this.confirmarCrearBy).click();
+    }
+
     async obtenerError(){
         let error = await this.driver.findElement(this.errorBy);
         return await error.getText();
+    }
+
+    async sleep() {
+        return new Promise(resolve => setTimeout(resolve, 2000));
     }
 
 }

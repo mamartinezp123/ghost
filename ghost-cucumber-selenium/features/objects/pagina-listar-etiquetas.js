@@ -3,7 +3,7 @@ const {By} = require("selenium-webdriver");
 class PaginaListarEtiquetas {
 
     driver;
-    nuevaEtiquetaBy = By.css(".view-actions .gh-btn-green");
+    nuevaEtiquetaBy = By.css(".view-actions a");
     nombresBy = By.css(".tags-list a h3");
 
     constructor(driver) {
