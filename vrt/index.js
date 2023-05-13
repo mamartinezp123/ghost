@@ -2,7 +2,7 @@ const fs = require("fs");
 const compareImages = require("resemblejs/compareImages");
 const conf = require("./config.json");
 
-const reportPath = `report_${Date.now()}`;
+const reportPath = `report`;
 const reportSrcPath = `src`;
 
 const deltaResult = {
