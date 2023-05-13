@@ -3,7 +3,7 @@ class PaginaCrearModificarEliminarEtiqueta {
     driver;
     nombreBy = "input[tabindex='1']";
     descripcionBy = "textarea[tabindex='3']";
-    crearModificarBy = ".gh-btn-blue";
+    crearModificarBy = ".view-actions button";
     etiquetasBy = ".gh-canvas-title a";
     eliminarBy = ".gh-canvas .gh-btn-red";
     confirmarEliminarBy = ".modal-footer .gh-btn-red";

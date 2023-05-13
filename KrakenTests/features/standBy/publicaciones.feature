@@ -12,9 +12,11 @@ Feature: Escenarios publicacion
     And I wait for 3 seconds
     And diligencia con "Crear publicacion" y "Esta es la prueba de crear un publicacion en Ghost" y envia el formulario crear - modificar elemento
     And I wait for 3 seconds
+    And confirmar publicacion del elemento
+    And I wait for 3 seconds
     And va a la pagina de publicaciones
     And I wait for 3 seconds
-    Then el elemento "Crear publicacion" "2" "5" esta en la lista y tiene estado publicado
+    Then el elemento "Crear publicacion" esta en la lista y tiene estado publicado
 
   @user2 @web
   Scenario: Eliminar publicacion
@@ -28,9 +30,11 @@ Feature: Escenarios publicacion
     And I wait for 3 seconds
     And diligencia con "Eliminar publicacion" y "Esta es la prueba de eliminar un publicacion en Ghost" y envia el formulario crear - modificar elemento
     And I wait for 3 seconds
+    And confirmar publicacion del elemento
+    And I wait for 3 seconds
     And va a la pagina de publicaciones
     And I wait for 3 seconds
-    And hace click en el elemento "Eliminar publicacion" "2"
+    And hace click en el elemento "Eliminar publicacion"
     And I wait for 3 seconds
     And hace click en ajustes
     And I wait for 3 seconds
@@ -38,7 +42,7 @@ Feature: Escenarios publicacion
     And I wait for 3 seconds
     And hace click en el boton eliminar del mensaje de confirmacion
     And I wait for 3 seconds
-    Then el elemento "Eliminar publicacion" "2" no esta en la lista
+    Then el elemento "Eliminar publicacion" no esta en la lista
 
   @user3 @web
   Scenario: Modificar publicacion
@@ -52,15 +56,17 @@ Feature: Escenarios publicacion
     And I wait for 3 seconds
     And diligencia con "Modificar publicacion" y "Esta es la prueba de modificar un publicacion en Ghost" y envia el formulario crear - modificar elemento
     And I wait for 3 seconds
+    And confirmar publicacion del elemento
+    And I wait for 3 seconds
     And va a la pagina de publicaciones
     And I wait for 3 seconds
-    And hace click en el elemento "Modificar publicacion" "2"
+    And hace click en el elemento "Modificar publicacion"
     And I wait for 3 seconds
     And diligencia con "Modificar publicacion actualizada" y "" y envia el formulario crear - modificar elemento
     And I wait for 3 seconds
     And va a la pagina de publicaciones
     And I wait for 3 seconds
-    Then el elemento "Modificar publicacion actualizada" "2" "5" esta en la lista y tiene estado publicado
+    Then el elemento "Modificar publicacion actualizada" esta en la lista y tiene estado publicado
 
   @user4 @web
   Scenario: Modificar publicacion con titulo de 285 caracteres
@@ -74,9 +80,11 @@ Feature: Escenarios publicacion
     And I wait for 3 seconds
     And diligencia con "Modificar publicacion titulo largo" y "Esta es la prueba de modificar un publicacion en Ghost" y envia el formulario crear - modificar elemento
     And I wait for 3 seconds
+    And confirmar publicacion del elemento
+    And I wait for 3 seconds
     And va a la pagina de publicaciones
     And I wait for 3 seconds
-    And hace click en el elemento "Modificar publicacion titulo largo" "2"
+    And hace click en el elemento "Modificar publicacion titulo largo"
     And I wait for 3 seconds
     And diligencia con "Modificar publicacion titulo largo modificar publicacion modificar publicacion modificar publicacion modificar publicacion modificar publicacion modificar publicacion modificar publicacion modificar publicacion modificar publicacion modificar publicacion modificar publicacion modificar publicacion" y "" y envia el formulario crear - modificar elemento
     And I wait for 3 seconds
@@ -96,7 +104,7 @@ Feature: Escenarios publicacion
     And I wait for 3 seconds
     And va a la pagina de publicaciones
     And I wait for 3 seconds
-    And hace click en el elemento "Eliminar borrador publicacion" "2"
+    And hace click en el elemento "Eliminar borrador publicacion"
     And I wait for 3 seconds
     And hace click en ajustes
     And I wait for 3 seconds
@@ -104,4 +112,4 @@ Feature: Escenarios publicacion
     And I wait for 3 seconds
     And hace click en el boton eliminar del mensaje de confirmacion
     And I wait for 3 seconds
-    Then el elemento "Eliminar borrador publicacion" "2" no esta en la lista
+    Then el elemento "Eliminar borrador publicacion" no esta en la lista

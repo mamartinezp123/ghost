@@ -6,10 +6,11 @@ class PaginaCrearModificarEliminarElemento {
     menuBy = ".gh-publishmenu";
     crearModificarBy = ".gh-publishmenu-button";
     elementosBy = ".gh-editor-header a";
-    ajustesBy = ".post-settings";
+    ajustesBy = "button[title='Settings']";
     eliminarBy = ".settings-menu-delete-button";
     confirmarEliminarBy = ".modal-footer .gh-btn-red";
     errorBy = "article div";
+    confirmarCrearBy = ".modal-footer .gh-btn-black";
 
     constructor(driver) {
         this.driver = driver;
@@ -49,6 +50,10 @@ class PaginaCrearModificarEliminarElemento {
     async obtenerError(){
         let error = await this.driver.$(this.errorBy);
         return await error.getText();
+    }
+
+    async hacerClickEnConfirmarCrear() {
+        await this.driver.$(this.confirmarCrearBy).click();
     }
 
 }

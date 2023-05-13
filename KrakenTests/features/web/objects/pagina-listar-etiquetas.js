@@ -1,7 +1,7 @@
 class PaginaListarEtiquetas {
 
     driver;
-    nuevaEtiquetaBy = ".view-actions .gh-btn-green";
+    nuevaEtiquetaBy = ".view-actions a";
     nombresBy = ".tags-list a h3";
 
     constructor(driver) {

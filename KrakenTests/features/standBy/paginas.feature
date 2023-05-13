@@ -14,7 +14,7 @@ Feature: Escenarios paginas
     And I wait for 3 seconds
     And va a la pagina de paginas
     And I wait for 3 seconds
-    Then el elemento "Crear pagina" "2" "3" esta en la lista y tiene estado publicado
+    Then el elemento "Crear pagina" esta en la lista y tiene estado publicado
 
   @user7 @web
   Scenario: Eliminar pagina
@@ -30,7 +30,7 @@ Feature: Escenarios paginas
     And I wait for 3 seconds
     And va a la pagina de paginas
     And I wait for 3 seconds
-    And hace click en el elemento "Eliminar pagina" "2"
+    And hace click en el elemento "Eliminar pagina"
     And I wait for 3 seconds
     And hace click en ajustes
     And I wait for 3 seconds
@@ -38,7 +38,7 @@ Feature: Escenarios paginas
     And I wait for 3 seconds
     And hace click en el boton eliminar del mensaje de confirmacion
     And I wait for 3 seconds
-    Then el elemento "Eliminar pagina" "2" no esta en la lista
+    Then el elemento "Eliminar pagina" no esta en la lista
 
   @user8 @web
   Scenario: Modificar pagina
@@ -54,13 +54,13 @@ Feature: Escenarios paginas
     And I wait for 3 seconds
     And va a la pagina de paginas
     And I wait for 3 seconds
-    And hace click en el elemento "Modificar pagina" "2"
+    And hace click en el elemento "Modificar pagina"
     And I wait for 3 seconds
     And diligencia con "Modificar pagina actualizado" y "" y envia el formulario crear - modificar elemento
     And I wait for 3 seconds
     And va a la pagina de paginas
     And I wait for 3 seconds
-    Then el elemento "Modificar pagina actualizado" "2" "3" esta en la lista y tiene estado publicado
+    Then el elemento "Modificar pagina actualizado" esta en la lista y tiene estado publicado
 
   @user9 @web
   Scenario: Modificar pagina con titulo de 285 caracteres
@@ -76,7 +76,7 @@ Feature: Escenarios paginas
     And I wait for 3 seconds
     And va a la pagina de paginas
     And I wait for 3 seconds
-    And hace click en el elemento "Modificar pagina titulo largo" "2"
+    And hace click en el elemento "Modificar pagina titulo largo"
     And I wait for 3 seconds
     And diligencia con "Modificar pagina titulo largo modificar pagina modificar pagina modificar pagina modificar pagina modificar pagina modificar pagina modificar pagina modificar pagina modificar pagina modificar pagina modificar pagina modificar pagina modificar pagina modificar pagina modificar pagina modificar pag" y "" y envia el formulario crear - modificar elemento
     And I wait for 3 seconds
@@ -96,7 +96,7 @@ Feature: Escenarios paginas
     And I wait for 3 seconds
     And va a la pagina de paginas
     And I wait for 3 seconds
-    And hace click en el elemento "Eliminar borrador pagina" "2"
+    And hace click en el elemento "Eliminar borrador pagina"
     And I wait for 3 seconds
     And hace click en ajustes
     And I wait for 3 seconds
@@ -104,4 +104,4 @@ Feature: Escenarios paginas
     And I wait for 3 seconds
     And hace click en el boton eliminar del mensaje de confirmacion
     And I wait for 3 seconds
-    Then el elemento "Eliminar borrador pagina" "2" no esta en la lista
+    Then el elemento "Eliminar borrador pagina" no esta en la lista

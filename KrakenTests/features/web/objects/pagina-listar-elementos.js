@@ -1,9 +1,9 @@
 class PaginaListarElementos {
 
     driver;
-    nuevoElementoBy = ".view-actions .gh-btn-green";
-    elementosTitulosCss = ".gh-posts-list-item a:nth-child(#) .gh-content-entry-title";
-    elementosEstadosCss = ".gh-posts-list-item a:nth-child(#) .gh-content-status-published";
+    nuevoElementoBy = ".view-actions a";
+    elementosTitulosBy = ".gh-posts-list-item .gh-content-entry-title";
+    elementosEstadosBy = ".gh-posts-list-item .gh-content-status-published";
 
     constructor(driver) {
         this.driver = driver;
@@ -13,9 +13,9 @@ class PaginaListarElementos {
         await this.driver.$(this.nuevoElementoBy).click();
     }
 
-    async obtenerEstadoElementoPorTitulo(titulo, columnaTitulo, columnaEstado) {
-        let titulos = await this.driver.$$(this.elementosTitulosCss.replace("#", columnaTitulo));
-        let estados = await this.driver.$$(this.elementosEstadosCss.replace("#", columnaEstado));
+    async obtenerEstadoElementoPorTitulo(titulo) {
+        let titulos = await this.driver.$$(this.elementosTitulosBy);
+        let estados = await this.driver.$$(this.elementosEstadosBy);
         for (let index = 0; index < titulos.length; index++) {
             if (await titulos[index].getText() == titulo) {
                 return await estados[index].getText();
@@ -24,10 +24,11 @@ class PaginaListarElementos {
         return "";
     }
 
-    async hacerClickEnElementoPorTitulo(titulo, columnaTitulo) {
-        let titulos = await this.driver.$$(this.elementosTitulosCss.replace("#", columnaTitulo));
+    async hacerClickEnElementoPorTitulo(titulo) {
+        let titulos = await this.driver.$$(this.elementosTitulosBy);
         for (let index = 0; index < titulos.length; index++) {
-            if (await titulos[index].getText() == titulo) {
+            let tituloTmp = await titulos[index].getText();
+            if (tituloTmp.trim() == titulo) {
                 await titulos[index].click();
                 break;
             }
@@ -35,8 +36,8 @@ class PaginaListarElementos {
         return "";
     }
 
-    async estaElementoPorTitulo(titulo, columnaTitulo) {
-        let titulos = await this.driver.$$(this.elementosTitulosCss.replace("#", columnaTitulo));
+    async estaElementoPorTitulo(titulo) {
+        let titulos = await this.driver.$$(this.elementosEstadosBy);
         for (let index = 0; index < titulos.length; index++) {
             if (await titulos[index].getText() == titulo) {
                 return true;

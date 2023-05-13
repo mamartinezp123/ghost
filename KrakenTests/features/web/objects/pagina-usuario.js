@@ -41,7 +41,7 @@ class PaginaUsuario {
     async cambiarContrasena(contrasena, contrasenaAntigua, contrasenaNueva, contrasenaVerificacion) {
         await this.driver.$(this.contrasenaAntiguaBy).setValue(contrasena + contrasenaAntigua);
         await this.driver.$(this.contrasenaNuevaBy).setValue(contrasenaNueva == "1234567890" ? contrasenaNueva : (contrasenaNueva == "" ? contrasenaNueva : contrasena + contrasenaNueva));
-        await this.driver.$(this.contrasenaVerificacionBy).setValue(contrasenaVerificacion == "1234567890" ? contrasenaVerificacion : (contrasenaNueva == "" ? contrasenaNueva : contrasena + contrasenaNueva));
+        await this.driver.$(this.contrasenaVerificacionBy).setValue(contrasenaVerificacion == "1234567890" ? contrasenaVerificacion : (contrasenaVerificacion == "" ? contrasenaVerificacion : contrasena + contrasenaVerificacion));
         await this.driver.$(this.cambiarContrasenaBy).click();
     }
 
