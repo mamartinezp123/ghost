@@ -83,11 +83,17 @@
 # Como ejecutar las pruebas
 ## Prerequisitos
 1. Haber ejecutado las pruebas Playwright tanto para la version 3.41.1 como para la version 4.44.0, con el fin de generar los pantallazos a comparar, luego de esto tomar los archivos y ubicarlos en el directorio indicado. Ejemplo: si ejecuto el escenario "Modificar contraseña de usuario con contrasena insegura" con Playwright se debieron haber generado los siguientes directorios y archivos.
+
 ![image](https://github.com/mamartinezp123/ghost/assets/124101154/7e1c1cca-ef5b-4c99-be22-ad50fc01af77)
+
 Estos archivos deben ser ubicados en el directrio source del proyecto de regresion visual dependiendo de la configuracion del archivo config.json en el atributo feature
+
 ![image](https://github.com/mamartinezp123/ghost/assets/124101154/1c3c43c8-2abd-42a4-83b6-f91f4e919c09)
+
 Quedando asi
+
 ![image](https://github.com/mamartinezp123/ghost/assets/124101154/bc616b47-676d-459c-8889-5549cd45a3aa)
+
 3. Nodejs
 4. Npm
 5. Google Chrome
@@ -98,5 +104,8 @@ Dependediendo de la version de ghost sobre la cual realizara las pruebas de regr
 1. Luego de descargar una copia del proyecto dirijase al directorio root del mismo y ubicar los pantallazos obtenidos en la ejecucion con Playwright en los directorios definidos en el archivo config.js sefun el prerequisito.
 2. Ingrese el comando __*npm install*__ para descargar las dependencias.
 3. Ingrese el comando __*node index.js*__ para ejecutar los escenarios de pruebas.
+4. Se generara un directorio report que contiene un archivo report.html que contiene el reporte de las pruebas de regresion visual.
+
+![image](https://github.com/mamartinezp123/ghost/assets/124101154/13c3a7da-59e9-4f82-af21-afc35c8fa87d)
 
 Hasta luego!
