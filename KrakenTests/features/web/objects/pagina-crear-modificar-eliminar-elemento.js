@@ -1,14 +1,13 @@
 class PaginaCrearModificarEliminarElemento {
-
     driver;
     tituloBy = "textarea[tabindex='1']";
     contenidoBy = "div p";
     menuBy = ".gh-publishmenu";
     crearModificarBy = ".gh-publishmenu-button";
     elementosBy = ".gh-editor-header a";
-    ajustesBy = ".post-settings";
+    ajustesBy = "button.post-settings";
     eliminarBy = ".settings-menu-delete-button";
-    confirmarEliminarBy = ".modal-footer .gh-btn-red";
+    confirmarEliminarBy = ".modal-footer > button.gh-btn-red";
     errorBy = "article div";
 
     constructor(driver) {
@@ -46,11 +45,10 @@ class PaginaCrearModificarEliminarElemento {
         await this.driver.$(this.confirmarEliminarBy).click();
     }
 
-    async obtenerError(){
+    async obtenerError() {
         let error = await this.driver.$(this.errorBy);
         return await error.getText();
     }
-
 }
 
 module.exports = PaginaCrearModificarEliminarElemento;

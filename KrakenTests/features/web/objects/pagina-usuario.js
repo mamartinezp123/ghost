@@ -1,5 +1,4 @@
 class PaginaUsuario {
-
     driver;
     cerrarSesionBy = ".dropdown-menu li:nth-child(9) a";
     perfilBy = ".dropdown-menu li:nth-child(4) a";
@@ -9,7 +8,7 @@ class PaginaUsuario {
     contrasenaAntiguaBy = "#user-password-old";
     contrasenaNuevaBy = "#user-password-new";
     contrasenaVerificacionBy = "#user-new-password-verification";
-    cambiarContrasenaBy = "form:nth-child(2) button";
+    cambiarContrasenaBy = "form#password-reset button.button-change-password";
     errorBy = "article div";
     errorCampoBy = "form:nth-child(2) p";
 
@@ -22,15 +21,15 @@ class PaginaUsuario {
     }
 
     async perfil() {
-        await this.driver.$(this.perfilBy).click()
+        await this.driver.$(this.perfilBy).click();
     }
 
     async regenerar() {
-        await this.driver.$(this.regenerarBy).click()
+        await this.driver.$(this.regenerarBy).click();
     }
 
     async confirmar() {
-        await this.driver.$(this.confirmarBy).click()
+        await this.driver.$(this.confirmarBy).click();
     }
 
     async obtenerMensaje() {
@@ -38,10 +37,22 @@ class PaginaUsuario {
         return await mensaje.getText();
     }
 
-    async cambiarContrasena(contrasena, contrasenaAntigua, contrasenaNueva, contrasenaVerificacion) {
-        await this.driver.$(this.contrasenaAntiguaBy).setValue(contrasena + contrasenaAntigua);
-        await this.driver.$(this.contrasenaNuevaBy).setValue(contrasenaNueva == "1234567890" ? contrasenaNueva : (contrasenaNueva == "" ? contrasenaNueva : contrasena + contrasenaNueva));
-        await this.driver.$(this.contrasenaVerificacionBy).setValue(contrasenaVerificacion == "1234567890" ? contrasenaVerificacion : (contrasenaNueva == "" ? contrasenaNueva : contrasena + contrasenaNueva));
+    async cambiarContrasena(
+        contrasena,
+        contrasenaAntigua,
+        contrasenaNueva,
+        contrasenaVerificacion
+    ) {
+        console.log(contrasenaAntigua, contrasenaNueva, contrasenaVerificacion);
+        await this.driver
+            .$(this.contrasenaAntiguaBy)
+            .setValue(contrasena + contrasenaAntigua);
+        await this.driver
+            .$(this.contrasenaNuevaBy)
+            .setValue(contrasenaNueva);
+        await this.driver
+            .$(this.contrasenaVerificacionBy)
+            .setValue(contrasenaVerificacion);
         await this.driver.$(this.cambiarContrasenaBy).click();
     }
 
@@ -53,9 +64,6 @@ class PaginaUsuario {
         let errores = await this.driver.$$(this.errorCampoBy);
         return await errores[campo].getText();
     }
-
-
-
 }
 
 module.exports = PaginaUsuario;

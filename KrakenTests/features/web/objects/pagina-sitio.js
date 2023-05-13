@@ -1,10 +1,9 @@
 class PaginaSitio {
-
     driver;
-    publicacionesBy = ".gh-nav-manage li:nth-child(2) a";
-    paginasBy = ".gh-nav-manage li:nth-child(3) a";
-    etiquetasBy = ".gh-nav-manage li:nth-child(4) a";
-    usuarioBy = ".gh-nav-bottom div";
+    publicacionesBy = ".gh-nav-manage > li:nth-child(2) > a";
+    paginasBy = ".gh-nav-manage > li:nth-child(3) > a";
+    etiquetasBy = ".gh-nav-manage > li:nth-child(4) > a";
+    usuarioBy = ".gh-nav-bottom > div:first-child";
 
     constructor(driver) {
         this.driver = driver;
@@ -25,7 +24,6 @@ class PaginaSitio {
     async mostrarMenuUsuario() {
         await this.driver.$(this.usuarioBy).click();
     }
-
 }
 
 module.exports = PaginaSitio;
