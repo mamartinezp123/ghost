@@ -4,7 +4,7 @@ class PaginaSitio {
     publicacionesBy = ".gh-nav-manage li:nth-child(2) a";
     paginasBy = ".gh-nav-manage li:nth-child(3) a";
     etiquetasBy = ".gh-nav-manage li:nth-child(4) a";
-    usuarioBy = ".gh-nav-bottom div";
+    usuarioBy = ".gh-nav-bottom div.pe-all";
 
     constructor(driver) {
         this.driver = driver;

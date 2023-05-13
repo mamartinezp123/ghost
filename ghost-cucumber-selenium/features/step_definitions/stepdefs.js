@@ -35,18 +35,19 @@ let paginaUsuario;
 let nombreEscenario;
 let paso = 1;
 
-const identificacion = "ma.martinezp123@uniandes.edu.co";
-const contrasena = "c-L56kBCAyPxU_u";
-const version = "3.41.1"
+const identificacion = "ce.ardilav1@uniandes.edu.co";
+const contrasena = "**wWzf*zPLD8";
+const version = "4.44.0";
+const baseUrl = "http://localhost:3002/";
 
-const directorioReportes = "reportes/" + Date.now() + "/" + version + "/";
+const directorioReportes = `reportes/${version}/`;
 
 Before(
     async function (escenario) {
         driver = await new Builder().forBrowser("chrome").setChromeService(service).build();
         await driver.manage().setTimeouts({implicit: millisecondsToWait});
         await driver.manage().window().maximize();
-        await driver.get("http://localhost:2368/ghost/#/signin");
+        await driver.get(`${baseUrl}ghost/#/signin`);
         paginaAutenticacion = new PaginaAutenticacion(driver);
         paginaSitio = new PaginaSitio(driver);
         paginaListarElementos = new PaginaListarElementos(driver);
@@ -347,7 +348,7 @@ Then(
     "el usuario ya no esta autenticado",
     async function () {
         await sleep();
-        assert.equal("http://localhost:2368/ghost/#/signin", await driver.getCurrentUrl());
+        assert.equal(`${baseUrl}ghost/#/signin`, await driver.getCurrentUrl());
         driver.takeScreenshot().then(image => saveScreenshot(image));
     }
 );

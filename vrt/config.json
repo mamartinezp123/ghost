@@ -1,0 +1,103 @@
+{
+    "reference": {
+        "version": "3.41.1",
+        "basepath": "source/3.41.1/"
+    },
+    "target": {
+        "version": "4.44.0",
+        "basepath": "source/4.44.0/"
+    },
+    "features": [
+        {
+            "Id": 1,
+            "Name": "Etiquetas",
+            "Description": "Funcionalidades crear, modificar y eliminar del modulo etiquetas",
+            "Scenarios": [
+                {
+                    "Id": 1,
+                    "Name": "CrearEtiqueta",
+                    "Description": "Creación de etiqueta"
+                },
+                {
+                    "Id": 2,
+                    "Name": "EliminarEtiqueta",
+                    "Description": "Eliminación de etiqueta"
+                },
+                {
+                    "Id": 3,
+                    "Name": "ModificarEtiqueta",
+                    "Description": "Actualización de etiqueta"
+                }
+            ]
+        },
+        {
+            "Id": 2,
+            "Name": "Publicaciones",
+            "Description": "Funcionalidades crear, modificar y eliminar del modulo publicaciones",
+            "Scenarios": [
+                {
+                    "Id": 1,
+                    "Name": "CrearPost",
+                    "Description": "Creación de publicación"
+                },
+                {
+                    "Id": 2,
+                    "Name": "EliminarPost",
+                    "Description": "Eliminación de publicación"
+                },
+                {
+                    "Id": 3,
+                    "Name": "ModificarPost",
+                    "Description": "Actualización de publicación"
+                }
+            ]
+        },
+        {
+            "Id": 3,
+            "Name": "Usuarios",
+            "Description": "Funcionalidades regenerar token, cambiar contrasena y cerrar sesion del modulo usuarios",
+            "Scenarios": [
+                {
+                    "Id": 1,
+                    "Name": "CerrarSesion",
+                    "Description": "Cerrar sesion de usuario"
+                },
+                {
+                    "Id": 2,
+                    "Name": "RegenerarToken",
+                    "Description": "Regenerar token de usuario"
+                },
+                {
+                    "Id": 3,
+                    "Name": "ActualizarClaveInsegura",
+                    "Description": "Modificar contraseña de usuario con contrasena insegura"
+                }
+            ]
+        },
+        {
+            "Id": 4,
+            "Name": "Paginas",
+            "Description": "Funcionalidades crear, modificar y eliminar del modulo paginas",
+            "Scenarios": [
+                {
+                    "Id": 1,
+                    "Name": "CrearPagina",
+                    "Description": "Crear pagina"
+                },
+                {
+                    "Id": 2,
+                    "Name": "EliminarPagina",
+                    "Description": "Eliminar pagina"
+                },
+                {
+                    "Id": 3,
+                    "Name": "ModificarPagina",
+                    "Description": "Actualizar pagina"
+                }
+            ]
+        }
+    ],
+    "options": {
+        "scaleToSameSize": true
+    }
+}
