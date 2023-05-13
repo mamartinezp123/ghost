@@ -2,11 +2,11 @@
     "application": "Ghost",
     "reference": {
         "version": "3.41.1",
-        "basepath": "source/3.41.1/"
+        "basepath": "./source/3.41.1/"
     },
     "target": {
         "version": "4.44.0",
-        "basepath": "source/4.44.0/"
+        "basepath": "./source/4.44.0/"
     },
     "features": [
         {
