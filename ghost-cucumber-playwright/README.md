@@ -99,7 +99,11 @@
 3. Google Chrome
 ## A tener en cuenta
 Debe actualizar las constantes usuario y contrasena en el archivo __*stepdef.js*__ en las lineas 36 y 37 respoectivamente, por credenciales validas que tenga en su ambiente local para acceder a Ghost.
-Dependediendo de la version de ghost sobre la cual realizara las pruebas de regresión visual, debe actualizar la constante version por los valores 3.41.1 o 4.44.0, ya que dependiendo de esto se generara un directorio con los pantallazos de la version indicada.
+
+Dependediendo de la version de ghost sobre la cual realizara las pruebas de regresión visual, debe actualizar la constante version en el archivo __*stepdef.js*__ por los valores 3.41.1 o 4.44.0, ya que a partir de esto se generara un directorio con los pantallazos de la version indicada.
+
+Recuerde de ser necesario tambien debe actualizar la constante baseUrl en el archivo __*stepdef.js*__ para utilizar el path de su ambiente local. 
+
 ## Pasos
 1. Luego de descargar una copia del proyecto dirijase al directorio root del mismo
 2. Ingrese el comando __*npm install*__ para descargar las dependencias.
