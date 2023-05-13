@@ -38,7 +38,9 @@ const compareReport = (compare, index) => {
             <div class="col">
                 <div class="row">
                     <dt class="col-sm-4">Mismas dimensiones</dt>
-                    <dd class="col-sm-8">${compare.isSameDimensions ? "Si" : "No"}</dd>
+                    <dd class="col-sm-8">${
+                        compare.isSameDimensions ? "Si" : "No"
+                    }</dd>
                 </div>
                 <div class="row">
                     <dt class="col-sm-4">Diferencias en dimensiones</dt>
@@ -177,6 +179,7 @@ const init = async () => {
                 if (targetImages.includes(refImg)) {
                     const ref = `${refPath}/${refImg}`;
                     const target = `${targetPath}/${refImg}`;
+                    console.log(ref, target);
                     fs.copyFileSync(
                         ref,
                         `${reportPath}/${srcPath}/ref-${refImg}`
