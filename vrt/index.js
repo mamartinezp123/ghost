@@ -2,8 +2,8 @@ const fs = require("fs");
 const compareImages = require("resemblejs/compareImages");
 const conf = require("./config.json");
 
-const reportPath = `./report`;
-const reportSrcPath = `./src`;
+const reportPath = `report`;
+const reportSrcPath = `src`;
 
 const deltaResult = {
     title: "",
@@ -167,7 +167,7 @@ const init = async () => {
             let scenarioResult = { name: scenario.description, compares: [] };
 
             const srcPath = `${reportSrcPath}/${feature.name}/${scenario.name}`;
-            fs.mkdirSync(srcPath, dirOptions);
+            fs.mkdirSync(`${reportPath}/${srcPath}`, dirOptions);
 
             let refPath = `${conf.reference.basepath}/${feature.name}/${scenario.name}`;
             const refImages = fs.readdirSync(refPath, dirOptions);
