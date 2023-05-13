@@ -5,10 +5,10 @@ const {
     Then,
     After,
     Before,
+    setDefaultTimeout
 } = require("@cucumber/cucumber");
 const {Builder} = require("selenium-webdriver");
 const chrome = require("selenium-webdriver/chrome");
-const {By} = require("selenium-webdriver");
 const PaginaAutenticacion = require("../objects/pagina-autenticacion");
 const PaginaSitio = require("../objects/pagina-sitio");
 const PaginaListarElementos = require("../objects/pagina-listar-elementos");
@@ -16,9 +16,13 @@ const PaginaCrearModificarEliminarElemento = require("../objects/pagina-crear-mo
 const PaginaListarEtiquetas = require("../objects/pagina-listar-etiquetas");
 const PaginaCrearModificarEliminarEtiqueta = require("../objects/pagina-crear-modificar-eliminar-etiqueta");
 const PaginaUsuario = require("../objects/pagina-usuario");
+const fs = require('fs');
 
-const millisecondsToWait = 2000;
+setDefaultTimeout(100 * 1000);
+
+const millisecondsToWait = 3000;
 const service = new chrome.ServiceBuilder("./chromedriver.exe");
+
 
 let driver;
 let paginaAutenticacion;
@@ -28,16 +32,22 @@ let paginaCrearModificarEliminarElemento;
 let paginaListarEtiquetas;
 let paginaCrearModificarEliminarEtiqueta;
 let paginaUsuario;
+let nombreEscenario;
+let paso = 1;
 
-const usuario = "ma.martinezp123@uniandes.edu.co";
-const identificacion = "ma.martinezp123@uniandes.edu.co";
-const contrasena = "c-L56kBCAyPxU_u";
+const identificacion = "ce.ardilav1@uniandes.edu.co";
+const contrasena = "**wWzf*zPLD8";
+const version = "4.44.0";
+const baseUrl = "http://localhost:3002/";
+
+const directorioReportes = `reportes/${version}/`;
 
 Before(
-    async function () {
+    async function (escenario) {
         driver = await new Builder().forBrowser("chrome").setChromeService(service).build();
         await driver.manage().setTimeouts({implicit: millisecondsToWait});
-        await driver.get("http://localhost:2368/ghost/#/signin");
+        await driver.manage().window().maximize();
+        await driver.get(`${baseUrl}ghost/#/signin`);
         paginaAutenticacion = new PaginaAutenticacion(driver);
         paginaSitio = new PaginaSitio(driver);
         paginaListarElementos = new PaginaListarElementos(driver);
@@ -45,6 +55,8 @@ Before(
         paginaListarEtiquetas = new PaginaListarEtiquetas(driver);
         paginaCrearModificarEliminarEtiqueta = new PaginaCrearModificarEliminarEtiqueta(driver);
         paginaUsuario = new PaginaUsuario(driver);
+        nombreEscenario = escenario.pickle.name;
+        paso = 1;
     }
 );
 
@@ -53,6 +65,7 @@ Given(
     async function () {
         await sleep();
         await paginaAutenticacion.autenticacionValida(identificacion, contrasena);
+        driver.takeScreenshot().then(image => saveScreenshot(image));
     }
 );
 
@@ -60,7 +73,8 @@ When(
     "hace click en el link publicaciones",
     async function () {
         await sleep();
-        await paginaSitio.listarPublicaciones();
+        await paginaSitio.hacerClickEnOpcionPorNombre("Posts");
+        driver.takeScreenshot().then(image => saveScreenshot(image));
     }
 );
 
@@ -69,6 +83,7 @@ When(
     async function () {
         await sleep();
         await paginaListarElementos.hacerClickEnNuevoElemento();
+        driver.takeScreenshot().then(image => saveScreenshot(image));
     }
 );
 
@@ -77,6 +92,7 @@ When(
     async function () {
         await sleep();
         await paginaListarEtiquetas.hacerClickEnNuevaEtiqueta();
+        driver.takeScreenshot().then(image => saveScreenshot(image));
     }
 );
 
@@ -85,6 +101,18 @@ When(
     async function (titulo, contenido) {
         await sleep();
         await paginaCrearModificarEliminarElemento.crearOModificarElemento(titulo, contenido);
+        driver.takeScreenshot().then(image => saveScreenshot(image));
+    }
+);
+
+When(
+    "confirmar publicacion del elemento",
+    async function () {
+        await sleep();
+        if (version == "4.44.0") {
+            await paginaCrearModificarEliminarElemento.hacerClickEnConfirmarCrear();
+        }
+        driver.takeScreenshot().then(image => saveScreenshot(image));
     }
 );
 
@@ -92,22 +120,25 @@ When(
     "va a la pagina de publicaciones", async function () {
         await sleep();
         await paginaCrearModificarEliminarElemento.listarElementos();
+        driver.takeScreenshot().then(image => saveScreenshot(image));
     }
 );
 
 Then(
-    "el elemento {string} {string} {string} esta en la lista y tiene estado publicado",
-    async function (titulo, columnaTitulo, columnaEstado) {
+    "el elemento {string} esta en la lista y tiene estado publicado",
+    async function (titulo) {
         await sleep();
-        assert.equal("PUBLISHED", await paginaListarElementos.obtenerEstadoElementoPorTitulo(titulo, columnaTitulo, columnaEstado));
+        assert.equal("PUBLISHED", await paginaListarElementos.obtenerEstadoElementoPorTitulo(titulo));
+        driver.takeScreenshot().then(image => saveScreenshot(image));
     }
 );
 
 When(
-    "hace click en el elemento {string} {string}",
-    async function (titulo, columnaTitulo) {
+    "hace click en el elemento {string}",
+    async function (titulo) {
         await sleep();
-        await paginaListarElementos.hacerClickEnElementoPorTitulo(titulo, columnaTitulo);
+        await paginaListarElementos.hacerClickEnElementoPorTitulo(titulo);
+        driver.takeScreenshot().then(image => saveScreenshot(image));
     }
 );
 
@@ -116,6 +147,8 @@ When(
     async function () {
         await sleep();
         await paginaCrearModificarEliminarElemento.hacerClickEnAjustes();
+        await sleep();
+        driver.takeScreenshot().then(image => saveScreenshot(image));
     }
 );
 
@@ -124,6 +157,8 @@ When(
     async function () {
         await sleep();
         await paginaCrearModificarEliminarElemento.hacerClickEnEliminar();
+        await sleep();
+        driver.takeScreenshot().then(image => saveScreenshot(image));
     }
 );
 
@@ -132,14 +167,16 @@ When(
     async function () {
         await sleep();
         await paginaCrearModificarEliminarElemento.hacerClickEnConfirmarEliminar();
+        driver.takeScreenshot().then(image => saveScreenshot(image));
     }
 );
 
 Then(
-    "el elemento {string} {string} no esta en la lista",
-    async function (titulo, columnaTitulo) {
+    "el elemento {string} no esta en la lista",
+    async function (titulo) {
         await sleep();
-        assert.equal(false, await paginaListarElementos.estaElementoPorTitulo(titulo, columnaTitulo));
+        assert.equal(false, await paginaListarElementos.estaElementoPorTitulo(titulo));
+        driver.takeScreenshot().then(image => saveScreenshot(image));
     }
 );
 
@@ -148,6 +185,7 @@ Then(
     async function () {
         await sleep();
         assert.equal("Update failed: Title cannot be longer than 255 characters.", await paginaCrearModificarEliminarElemento.obtenerError());
+        driver.takeScreenshot().then(image => saveScreenshot(image));
     }
 );
 
@@ -156,6 +194,7 @@ When(
     async function (titulo, contenido) {
         await sleep();
         await paginaCrearModificarEliminarElemento.crearOModificarBorradorElemento(titulo, contenido);
+        driver.takeScreenshot().then(image => saveScreenshot(image));
     }
 );
 
@@ -163,7 +202,8 @@ When(
     "hace click en el link paginas",
     async function () {
         await sleep();
-        await paginaSitio.listarPaginas();
+        await paginaSitio.hacerClickEnOpcionPorNombre("Pages");
+        driver.takeScreenshot().then(image => saveScreenshot(image));
     }
 );
 
@@ -172,6 +212,7 @@ When(
     async function () {
         await sleep();
         await paginaCrearModificarEliminarElemento.listarElementos();
+        driver.takeScreenshot().then(image => saveScreenshot(image));
     }
 );
 
@@ -179,7 +220,8 @@ When(
     "hace click en el link etiquetas",
     async function () {
         await sleep();
-        await paginaSitio.listarEtiquetas();
+        await paginaSitio.hacerClickEnOpcionPorNombre("Tags");
+        driver.takeScreenshot().then(image => saveScreenshot(image));
     }
 );
 
@@ -188,6 +230,7 @@ When(
     async function (nombre, descripcion) {
         await sleep();
         await paginaCrearModificarEliminarEtiqueta.crearOModificarEtiqueta(nombre, descripcion);
+        driver.takeScreenshot().then(image => saveScreenshot(image));
     }
 );
 
@@ -196,6 +239,7 @@ When(
     async function () {
         await sleep();
         await paginaCrearModificarEliminarEtiqueta.listarEtiquetas();
+        driver.takeScreenshot().then(image => saveScreenshot(image));
     }
 );
 
@@ -203,6 +247,7 @@ When(
     "hace click en la etiqueta {string}", async function (nombre) {
         await sleep();
         await paginaListarEtiquetas.haceClickEnEtiquetaPorNombre(nombre);
+        driver.takeScreenshot().then(image => saveScreenshot(image));
     }
 );
 
@@ -211,6 +256,7 @@ Then(
     async function (nombre) {
         await sleep();
         assert.equal(true, await paginaListarEtiquetas.estaEtiquetaPorNombre(nombre));
+        driver.takeScreenshot().then(image => saveScreenshot(image));
     }
 );
 
@@ -219,6 +265,7 @@ When(
     async function () {
         await sleep();
         await paginaCrearModificarEliminarEtiqueta.hacerClickEnEliminar();
+        driver.takeScreenshot().then(image => saveScreenshot(image));
     }
 );
 
@@ -227,6 +274,7 @@ When(
     async function () {
         await sleep();
         await paginaCrearModificarEliminarEtiqueta.hacerClickEnConfirmarEliminar();
+        driver.takeScreenshot().then(image => saveScreenshot(image));
     }
 );
 
@@ -235,6 +283,7 @@ Then(
     async function (nombre) {
         await sleep();
         assert.equal(false, await paginaListarEtiquetas.estaEtiquetaPorNombre(nombre));
+        driver.takeScreenshot().then(image => saveScreenshot(image));
     }
 );
 
@@ -243,6 +292,7 @@ Then(
     async function () {
         await sleep();
         assert.equal("Tag names cannot be longer than 191 characters.", await paginaCrearModificarEliminarEtiqueta.obtenerError());
+        driver.takeScreenshot().then(image => saveScreenshot(image));
     }
 );
 
@@ -251,6 +301,18 @@ When(
     async function () {
         await sleep();
         await paginaSitio.mostrarMenuUsuario();
+        await sleep();
+        driver.takeScreenshot().then(image => saveScreenshot(image));
+    }
+);
+
+When(
+    "hace click en la opcion {string}",
+    async function (nombre) {
+        await sleep();
+        await paginaSitio.hacerClickEnOpcionPorNombre(nombre);
+        await sleep();
+        driver.takeScreenshot().then(image => saveScreenshot(image));
     }
 );
 
@@ -259,6 +321,7 @@ When(
     async function () {
         await sleep();
         await paginaUsuario.perfil();
+        driver.takeScreenshot().then(image => saveScreenshot(image));
     }
 );
 
@@ -267,6 +330,8 @@ When(
     async function () {
         await sleep();
         await paginaUsuario.regenerar();
+        await sleep();
+        driver.takeScreenshot().then(image => saveScreenshot(image));
     }
 );
 
@@ -275,6 +340,7 @@ When(
     async function () {
         await sleep();
         await paginaUsuario.cerrarSesion();
+        driver.takeScreenshot().then(image => saveScreenshot(image));
     }
 );
 
@@ -282,7 +348,8 @@ Then(
     "el usuario ya no esta autenticado",
     async function () {
         await sleep();
-        assert.equal("http://localhost:2368/ghost/#/signin", await driver.getCurrentUrl());
+        assert.equal(`${baseUrl}ghost/#/signin`, await driver.getCurrentUrl());
+        driver.takeScreenshot().then(image => saveScreenshot(image));
     }
 );
 
@@ -291,6 +358,8 @@ When(
     async function () {
         await sleep();
         await paginaUsuario.confirmar();
+        await sleep();
+        driver.takeScreenshot().then(image => saveScreenshot(image));
     }
 );
 
@@ -298,7 +367,13 @@ Then(
     "se genera un nuevo token",
     async function () {
         await sleep();
-        assert.equal("Personal Token was successfully regenerated", await paginaUsuario.obtenerMensaje());
+        if (version == "3.41.1") {
+            assert.equal("Personal Token was successfully regenerated", await paginaUsuario.obtenerMensaje());
+        }
+        if (version == "4.44.0") {
+            assert.equal("Staff access token was successfully regenerated", await paginaUsuario.obtenerMensaje());
+        }
+        driver.takeScreenshot().then(image => saveScreenshot(image));
     }
 );
 
@@ -307,6 +382,7 @@ When(
     async function (contrasenaAntigua, contrasenaNueva, contrasenaVerificacion) {
         await sleep();
         await paginaUsuario.cambiarContrasena(contrasena, contrasenaAntigua, contrasenaNueva, contrasenaVerificacion);
+        driver.takeScreenshot().then(image => saveScreenshot(image));
     }
 );
 
@@ -315,6 +391,7 @@ Then(
     async function () {
         await sleep();
         assert.equal("Your password is incorrect. Your password is incorrect.", await paginaUsuario.obtenerError());
+        driver.takeScreenshot().then(image => saveScreenshot(image));
     }
 );
 
@@ -323,51 +400,27 @@ Then(
     async function () {
         await sleep();
         assert.equal("Your new passwords do not match", await paginaUsuario.obtenerErrorCampo(2));
+        driver.takeScreenshot().then(image => saveScreenshot(image));
     }
 );
 
 Then("se indica al usuario que la contraseña es insegura", async function () {
     await sleep();
-    assert.equal("Sorry, you cannot use an insecure password", await paginaUsuario.obtenerErrorCampo(1));
+    if (version == "3.41.1") {
+        assert.equal("Sorry, you cannot use an insecure password", await paginaUsuario.obtenerErrorCampo(1));
+
+    }
+    if (version == "4.44.0") {
+        assert.equal("Sorry, you cannot use an insecure password.", await paginaUsuario.obtenerErrorCampo(1));
+
+    }
+    driver.takeScreenshot().then(image => saveScreenshot(image));
 });
-
-When(
-    "refresca la pagina",
-    async function () {
-        await sleep();
-        await driver.navigate().refresh();
-    }
-);
-
-When("hace click en el menu de usuario nuevamente",
-    async function () {
-        await sleep();
-        await paginaSitio.mostrarMenuUsuario();
-    }
-);
-
-When(
-    "el usuario se autentica con {string}",
-    async function (contrasenaIn) {
-        await sleep();
-        await driver.get("http://localhost:2368/ghost/#/signin");
-        await driver.findElement(By.css("input[name='identification']")).sendKeys(usuario);
-        await driver.findElement(By.css("input[name='password']")).sendKeys(contrasena + contrasenaIn);
-        await driver.findElement(By.css("button[tabindex='3']")).click();
-    }
-);
-
-Then(
-    "el usuario accede a la aplicacion luego de modificar contrasena",
-    async function () {
-        await sleep();
-        assert.equal("http://localhost:2368/ghost/#/site", await driver.getCurrentUrl());
-    }
-);
 
 Then("se indica al usuario que la contraseña no puede estar vacia", async function () {
     await sleep();
     assert.equal("Sorry, passwords can't be blank", await paginaUsuario.obtenerErrorCampo(1));
+    driver.takeScreenshot().then(image => saveScreenshot(image));
 });
 
 After(async function () {
@@ -376,4 +429,13 @@ After(async function () {
 
 function sleep() {
     return new Promise(resolve => setTimeout(resolve, millisecondsToWait));
+}
+
+function saveScreenshot(image) {
+    sleep();
+    if (!fs.existsSync(directorioReportes + nombreEscenario)) {
+        fs.mkdirSync(directorioReportes + nombreEscenario, {recursive: true});
+    }
+    fs.writeFileSync(directorioReportes + nombreEscenario + "/" + paso + '.png', image, 'base64');
+    paso += 1;
 }

@@ -1,7 +1,7 @@
 class PaginaUsuario {
 
     driver;
-    cerrarSesionBy = ".dropdown-menu li:nth-child(9) a";
+    cerrarSesionBy = "ul.dropdown-menu li a.user-menu-signout";
     perfilBy = ".dropdown-menu li:nth-child(4) a";
     regenerarBy = "form:nth-child(3) button";
     confirmarBy = ".modal-footer .gh-btn-red";

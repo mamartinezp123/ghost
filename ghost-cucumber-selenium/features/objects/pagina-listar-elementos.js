@@ -3,9 +3,9 @@ const {By} = require("selenium-webdriver");
 class PaginaListarElementos {
 
     driver;
-    nuevoElementoBy = By.css(".view-actions .gh-btn-green");
-    elementosTitulosCss = ".gh-posts-list-item a:nth-child(#) .gh-content-entry-title";
-    elementosEstadosCss = ".gh-posts-list-item a:nth-child(#) .gh-content-status-published";
+    nuevoElementoBy = By.css(".view-actions a");
+    elementosTitulosBy = By.css(".gh-posts-list-item .gh-content-entry-title");
+    elementosEstadosBy = By.css(".gh-posts-list-item .gh-content-status-published");
 
     constructor(driver) {
         this.driver = driver;
@@ -15,9 +15,9 @@ class PaginaListarElementos {
         await this.driver.findElement(this.nuevoElementoBy).click();
     }
 
-    async obtenerEstadoElementoPorTitulo(titulo, columnaTitulo, columnaEstado) {
-        let titulos = await this.driver.findElements(By.css(this.elementosTitulosCss.replace("#", columnaTitulo)));
-        let estados = await this.driver.findElements(By.css(this.elementosEstadosCss.replace("#", columnaEstado)));
+    async obtenerEstadoElementoPorTitulo(titulo) {
+        let titulos = await this.driver.findElements(this.elementosTitulosBy);
+        let estados = await this.driver.findElements(this.elementosEstadosBy);
         for (let index = 0; index < titulos.length; index++) {
             if (await titulos[index].getText() == titulo) {
                 return await estados[index].getText();
@@ -26,8 +26,8 @@ class PaginaListarElementos {
         return "";
     }
 
-    async hacerClickEnElementoPorTitulo(titulo, columnaTitulo) {
-        let titulos = await this.driver.findElements(By.css(this.elementosTitulosCss.replace("#", columnaTitulo)));
+    async hacerClickEnElementoPorTitulo(titulo) {
+        let titulos = await this.driver.findElements(this.elementosTitulosBy);
         for (let index = 0; index < titulos.length; index++) {
             if (await titulos[index].getText() == titulo) {
                 await titulos[index].click();
@@ -37,8 +37,8 @@ class PaginaListarElementos {
         return "";
     }
 
-    async estaElementoPorTitulo(titulo, columnaTitulo) {
-        let titulos = await this.driver.findElements(By.css(this.elementosTitulosCss.replace("#", columnaTitulo)));
+    async estaElementoPorTitulo(titulo) {
+        let titulos = await this.driver.findElements(this.elementosEstadosBy);
         for (let index = 0; index < titulos.length; index++) {
             if (await titulos[index].getText() == titulo) {
                 return true;

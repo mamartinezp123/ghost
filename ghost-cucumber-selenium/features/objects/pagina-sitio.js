@@ -3,29 +3,25 @@ const {By} = require("selenium-webdriver");
 class PaginaSitio {
 
     driver;
-    publicacionesBy = By.css(".gh-nav-manage li:nth-child(2) a");
-    paginasBy = By.css(".gh-nav-manage li:nth-child(3) a");
-    etiquetasBy = By.css(".gh-nav-manage li:nth-child(4) a");
-    usuarioBy = By.css(".gh-nav-bottom div");
+    usuarioBy = By.css(".gh-nav-bottom div div div");
+    opcionesBy = By.css(".gh-nav-manage li a");
 
     constructor(driver) {
         this.driver = driver;
     }
 
-    async listarPublicaciones() {
-        await this.driver.findElement(this.publicacionesBy).click();
-    }
-
-    async listarPaginas() {
-        await this.driver.findElement(this.paginasBy).click();
-    }
-
-    async listarEtiquetas() {
-        await this.driver.findElement(this.etiquetasBy).click();
-    }
-
     async mostrarMenuUsuario() {
         await this.driver.findElement(this.usuarioBy).click();
+    }
+
+    async hacerClickEnOpcionPorNombre(nombre) {
+        let opciones = await this.driver.findElements(this.opcionesBy);
+        for (let posicion = 0; posicion < opciones.length; posicion++) {
+            if (await opciones[posicion].getText() == nombre) {
+                await opciones[posicion].click();
+                break;
+            }
+        }
     }
 
 }
