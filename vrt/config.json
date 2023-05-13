@@ -1,4 +1,5 @@
 {
+    "application": "Ghost",
     "reference": {
         "version": "3.41.1",
         "basepath": "source/3.41.1/"
@@ -9,95 +10,107 @@
     },
     "features": [
         {
-            "Id": 1,
-            "Name": "Etiquetas",
-            "Description": "Funcionalidades crear, modificar y eliminar del modulo etiquetas",
-            "Scenarios": [
+            "id": 1,
+            "name": "Etiquetas",
+            "description": "Funcionalidades crear, modificar y eliminar del modulo etiquetas",
+            "scenarios": [
                 {
-                    "Id": 1,
-                    "Name": "CrearEtiqueta",
-                    "Description": "Creación de etiqueta"
+                    "id": 1,
+                    "name": "CrearEtiqueta",
+                    "description": "Creación de etiqueta"
                 },
                 {
-                    "Id": 2,
-                    "Name": "EliminarEtiqueta",
-                    "Description": "Eliminación de etiqueta"
+                    "id": 2,
+                    "name": "EliminarEtiqueta",
+                    "description": "Eliminación de etiqueta"
                 },
                 {
-                    "Id": 3,
-                    "Name": "ModificarEtiqueta",
-                    "Description": "Actualización de etiqueta"
+                    "id": 3,
+                    "name": "ModificarEtiqueta",
+                    "description": "Actualización de etiqueta"
                 }
             ]
         },
         {
-            "Id": 2,
-            "Name": "Publicaciones",
-            "Description": "Funcionalidades crear, modificar y eliminar del modulo publicaciones",
-            "Scenarios": [
+            "id": 2,
+            "name": "Publicaciones",
+            "description": "Funcionalidades crear, modificar y eliminar del modulo publicaciones",
+            "scenarios": [
                 {
-                    "Id": 1,
-                    "Name": "CrearPost",
-                    "Description": "Creación de publicación"
+                    "id": 1,
+                    "name": "CrearPost",
+                    "description": "Creación de publicación"
                 },
                 {
-                    "Id": 2,
-                    "Name": "EliminarPost",
-                    "Description": "Eliminación de publicación"
+                    "id": 2,
+                    "name": "EliminarPost",
+                    "description": "Eliminación de publicación"
                 },
                 {
-                    "Id": 3,
-                    "Name": "ModificarPost",
-                    "Description": "Actualización de publicación"
+                    "id": 3,
+                    "name": "ModificarPost",
+                    "description": "Actualización de publicación"
                 }
             ]
         },
         {
-            "Id": 3,
-            "Name": "Usuarios",
-            "Description": "Funcionalidades regenerar token, cambiar contrasena y cerrar sesion del modulo usuarios",
-            "Scenarios": [
+            "id": 3,
+            "name": "Usuarios",
+            "description": "Funcionalidades regenerar token, cambiar contrasena y cerrar sesion del modulo usuarios",
+            "scenarios": [
                 {
-                    "Id": 1,
-                    "Name": "CerrarSesion",
-                    "Description": "Cerrar sesion de usuario"
+                    "id": 1,
+                    "name": "CerrarSesion",
+                    "description": "Cerrar sesion de usuario"
                 },
                 {
-                    "Id": 2,
-                    "Name": "RegenerarToken",
-                    "Description": "Regenerar token de usuario"
+                    "id": 2,
+                    "name": "RegenerarToken",
+                    "description": "Regenerar token de usuario"
                 },
                 {
-                    "Id": 3,
-                    "Name": "ActualizarClaveInsegura",
-                    "Description": "Modificar contraseña de usuario con contrasena insegura"
+                    "id": 3,
+                    "name": "ActualizarClaveInsegura",
+                    "description": "Modificar contraseña de usuario con contrasena insegura"
                 }
             ]
         },
         {
-            "Id": 4,
-            "Name": "Paginas",
-            "Description": "Funcionalidades crear, modificar y eliminar del modulo paginas",
-            "Scenarios": [
+            "id": 4,
+            "name": "Paginas",
+            "description": "Funcionalidades crear, modificar y eliminar del modulo paginas",
+            "scenarios": [
                 {
-                    "Id": 1,
-                    "Name": "CrearPagina",
-                    "Description": "Crear pagina"
+                    "id": 1,
+                    "name": "CrearPagina",
+                    "description": "Crear pagina"
                 },
                 {
-                    "Id": 2,
-                    "Name": "EliminarPagina",
-                    "Description": "Eliminar pagina"
+                    "id": 2,
+                    "name": "EliminarPagina",
+                    "description": "Eliminar pagina"
                 },
                 {
-                    "Id": 3,
-                    "Name": "ModificarPagina",
-                    "Description": "Actualizar pagina"
+                    "id": 3,
+                    "name": "ModificarPagina",
+                    "description": "Actualizar pagina"
                 }
             ]
         }
     ],
     "options": {
-        "scaleToSameSize": true
+        "output": {
+            "errorColor": {
+                "red": 255,
+                "green": 0,
+                "blue": 255
+            },
+            "errorType": "movement",
+            "largeImageThreshold": 1200,
+            "useCrossOrigin": false,
+            "outputDiff": true
+        },
+        "scaleToSameSize": true,
+        "ignore": "antialiasing"
     }
 }
