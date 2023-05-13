@@ -101,7 +101,7 @@ Quedando asi
 Debe actualizar las constantes usuario y contrasena en el archivo __*stepdef.js*__ en las lineas 36 y 37 respoectivamente, por credenciales validas que tenga en su ambiente local para acceder a Ghost.
 Dependediendo de la version de ghost sobre la cual realizara las pruebas de regresión visual, debe actualizar la constante version por los valores 3.41.1 o 4.44.0, ya que dependiendo de esto se generara un directorio con los pantallazos de la version indicada.
 ## Pasos
-1. Luego de descargar una copia del proyecto dirijase al directorio root del mismo y ubicar los pantallazos obtenidos en la ejecucion con Playwright en los directorios definidos en el archivo config.js sefun el prerequisito.
+1. Luego de descargar una copia del proyecto dirijase al directorio root del mismo y ubicar los pantallazos obtenidos en la ejecucion con Playwright en los directorios definidos en el archivo config.js de acuerdo a los prerequisitos.
 2. Ingrese el comando __*npm install*__ para descargar las dependencias.
 3. Ingrese el comando __*node index.js*__ para ejecutar los escenarios de pruebas.
 4. Se generara un directorio report que contiene un archivo report.html que contiene el reporte de las pruebas de regresion visual.
