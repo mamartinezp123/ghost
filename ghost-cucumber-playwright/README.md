@@ -105,6 +105,4 @@ Dependediendo de la version de ghost sobre la cual realizara las pruebas de regr
 2. Ingrese el comando __*npm install*__ para descargar las dependencias.
 3. Ingrese el comando __*npm test*__ para ejecutar los escenarios de pruebas.
 
-__Nota:__ Si tiene algun error por la version de chromedriver descargue la version adecuada en (https://chromedriver.chromium.org/downloads) y actulice el archivo en la carpeta del proyecto. Recuerde mantener el nombre chromedriver.exe
-
 Hasta luego!
