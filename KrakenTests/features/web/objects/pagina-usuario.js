@@ -54,8 +54,6 @@ class PaginaUsuario {
         return await errores[campo].getText();
     }
 
-
-
 }
 
 module.exports = PaginaUsuario;

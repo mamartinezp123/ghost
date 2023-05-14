@@ -1,15 +1,8 @@
 class PaginaSitio {
 
     driver;
-<<<<<<< HEAD
     usuarioBy = ".gh-nav-bottom div div div";
     opcionesBy = ".gh-nav-manage li a";
-=======
-    publicacionesBy = ".gh-nav-manage li:nth-child(2) a";
-    paginasBy = ".gh-nav-manage li:nth-child(3) a";
-    etiquetasBy = ".gh-nav-manage li:nth-child(4) a";
-    usuarioBy = ".gh-nav-bottom div.pe-all";
->>>>>>> e47b9dbe394c87c7e004cb0d0c8b72a346519b25
 
     constructor(driver) {
         this.driver = driver;
