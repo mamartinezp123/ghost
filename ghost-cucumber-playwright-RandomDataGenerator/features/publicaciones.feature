@@ -6,6 +6,4 @@ Feature: Publicaciones
     When hace click en el link publicaciones
     And hace click en el boton nuevo
     And diligencia con titulo de "260" y cuerpo de "12" y envia el formulario crear - modificar elemento
-    And confirmar publicacion del elemento
-    And va a la pagina de publicaciones
-    Then el elemento "Crear publicacion" esta en la lista y tiene estado publicado
+    Then el boton de creacion no esta en la pagina

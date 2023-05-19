@@ -1,5 +1,5 @@
 const assert = require("assert");
-const { Faker } = require("@faker-js/faker");
+const { faker } = require("@faker-js/faker");
 
 const {
     Given,
@@ -211,9 +211,9 @@ When(
         tituloLenght = parseInt(tituloLenght, 10);
         contenidoLenght = parseInt(contenidoLenght, 10);
         await sleep();
-        let titulo = Faker.person.fullName();
-        let contenido = Faker.person.firstName(12);
-        await paginaCrearModificarEliminarElemento.crearOModificarElemento(
+        let titulo = faker.string.alpha(tituloLenght);
+        let contenido = faker.string.alpha(contenidoLenght);
+        await paginaCrearModificarEliminarElemento.crearOModificarElementoConError(
             titulo,
             contenido
         );
@@ -397,6 +397,11 @@ Then("se indica al usuario que el nombre es muy largo", async function () {
     );
     driver.screenshot().then((image) => saveScreenshot(image));
 });
+
+Then("el boton de creacion no esta en la pagina", async function() {
+    await sleep();
+    assert(paginaCrearModificarEliminarElemento.botonMenuNoExiste(), false);
+})
 
 After(async function () {
     await sleep();
