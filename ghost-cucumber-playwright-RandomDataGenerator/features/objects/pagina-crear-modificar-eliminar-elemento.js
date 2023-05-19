@@ -11,6 +11,7 @@ class PaginaCrearModificarEliminarElemento {
     confirmarCrearBy = "css=.modal-footer .gh-btn-black";
     confirmarEliminarBy = "css=.modal-footer .gh-btn-red";
     errorBy = "css=article > div.gh-alert-content";
+    postsBy = "#4332";
 
     constructor(driver) {
         this.driver = driver;
@@ -24,6 +25,12 @@ class PaginaCrearModificarEliminarElemento {
             return false;
         }
         
+    }
+
+    async crearDraft(titulo, contenido) {
+        await this.driver.locator(this.tituloBy).fill(titulo);
+        await this.driver.locator(this.contenidoBy).fill(contenido);
+        await this.driver.locator(this.elementosBy).click();
     }
 
     async crearOModificarElemento(titulo, contenido) {

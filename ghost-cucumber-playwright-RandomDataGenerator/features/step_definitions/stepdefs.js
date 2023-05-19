@@ -34,6 +34,7 @@ let paginaListarEtiquetas;
 let paginaCrearModificarEliminarEtiqueta;
 let paginaUsuario;
 let nombreEscenario;
+let titulode254;
 let paso = 1;
 
 const identificacion = "of.garzon2662@gmail.com";
@@ -221,6 +222,74 @@ When(
     }
 );
 
+When(
+    "diligencia con titulo de 254 y cuerpo de 12 y envia el formulario crear - modificar elemento",
+    async function () {
+        await sleep();
+        titulode254 = faker.string.alpha(254);
+        let contenido = faker.string.alpha(12);
+        await paginaCrearModificarEliminarElemento.crearOModificarElemento(
+            titulode254,
+            contenido
+        );
+        driver.screenshot().then((image) => saveScreenshot(image));
+    }
+);
+
+Then(
+    "el elemento con titulo de 254 caracteres esta en la lista y tiene estado publicado",
+    async function () {
+        await sleep();
+        assert.equal(
+            "PUBLISHED".toLowerCase(),
+            (await paginaListarElementos.obtenerEstadoElementoPorTitulo(titulode254))
+                .trim()
+                .toLowerCase()
+        );
+        driver.screenshot().then((image) => saveScreenshot(image));
+    }
+);
+
+When(
+    "diligencia con titulo de 255 y cuerpo de 12 y envia el formulario crear - modificar elemento",
+    async function () {
+        await sleep();
+        titulode255 = faker.string.alpha(255);
+        let contenido = faker.string.alpha(12);
+        await paginaCrearModificarEliminarElemento.crearOModificarElemento(
+            titulode255,
+            contenido
+        );
+        driver.screenshot().then((image) => saveScreenshot(image));
+    }
+);
+
+Then(
+    "el elemento con titulo de 255 caracteres esta en la lista y tiene estado publicado",
+    async function () {
+        await sleep();
+        assert.equal(
+            "PUBLISHED".toLowerCase(),
+            (await paginaListarElementos.obtenerEstadoElementoPorTitulo(titulode255))
+                .trim()
+                .toLowerCase()
+        );
+        driver.screenshot().then((image) => saveScreenshot(image));
+    }
+);
+
+When(
+    "diligencia con {string} y {string} y envia el formulario crear - modificar elemento",
+    async function (titulo, contenido) {
+        await sleep();
+        await paginaCrearModificarEliminarElemento.crearOModificarElemento(
+            titulo,
+            contenido
+        );
+        driver.screenshot().then((image) => saveScreenshot(image));
+    }
+);
+
 When("va a la pagina de paginas", async function () {
     await sleep();
     await paginaCrearModificarEliminarElemento.listarElementos();
@@ -343,6 +412,13 @@ When(
         driver.screenshot().then((image) => saveScreenshot(image));
     }
 );
+
+
+When('crea un draft con titulo {string} y contenido {string}', async function (titulo, contenido) {
+    await sleep();
+        await paginaCrearModificarEliminarElemento.crearDraft(titulo, contenido);
+        driver.screenshot().then((image) => saveScreenshot(image));
+  });
 
 When("va a la pagina de etiquetas", async function () {
     await sleep();

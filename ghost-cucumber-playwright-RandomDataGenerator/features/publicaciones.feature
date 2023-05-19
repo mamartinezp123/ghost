@@ -1,9 +1,10 @@
 Feature: Publicaciones
     Funcionalidades crear, listar, modificar y eliminar del modulo publicaciones
 
-  Scenario: Crear post con titulo mayor a 255 caracteres
+
+Scenario: Crear un draft
     Given un usuario autenticado
     When hace click en el link publicaciones
     And hace click en el boton nuevo
-    And diligencia con titulo de "260" y cuerpo de "12" y envia el formulario crear - modificar elemento
-    Then el boton de creacion no esta en la pagina
+    And crea un draft con titulo "Este es solamente un draft de prueba" y contenido "Este es un fraft con un titulo de cero caracteres"
+    Then el elemento "Este es solamente un draft de prueba" esta en la lista y tiene estado publicado
