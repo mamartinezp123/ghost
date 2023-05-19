@@ -1,4 +1,6 @@
 const assert = require("assert");
+const { Faker } = require('@faker-js/faker');
+
 const {
     Given,
     When,
@@ -16,6 +18,7 @@ const PaginaCrearModificarEliminarElemento = require("../objects/pagina-crear-mo
 const PaginaListarEtiquetas = require("../objects/pagina-listar-etiquetas");
 const PaginaCrearModificarEliminarEtiqueta = require("../objects/pagina-crear-modificar-eliminar-etiqueta");
 const fs = require("fs");
+const { parse } = require("path");
 
 setDefaultTimeout(100 * 1000);
 
@@ -33,10 +36,10 @@ let paginaUsuario;
 let nombreEscenario;
 let paso = 1;
 
-const identificacion = "ce.ardilav1@uniandes.edu.co";
-const contrasena = "**wWzf*zPLD8";
-const version = "4.44.0";
-const baseUrl = "http://localhost:3002/";
+const identificacion = "of.garzon2662@gmail.com";
+const contrasena = 'P3~uJc?FwhXq"-2';
+const version = "3.41.1";
+const baseUrl = "http://localhost:3001/";
 
 const directorioReportes = `reportes/${version}/`;
 
@@ -203,9 +206,13 @@ When("hace click en el boton nuevo", async function () {
 });
 
 When(
-    "diligencia con {string} y {string} y envia el formulario crear - modificar elemento",
-    async function (titulo, contenido) {
+    "diligencia con titulo de {string} y cuerpo de {string} y envia el formulario crear - modificar elemento",
+    async function (tituloLenght, contenidoLenght) {
+        tituloLenght = parseInt(tituloLenght, 10);
+        contenidoLenght = parseInt(contenidoLenght, 10);
         await sleep();
+        let titulo = Faker.random.alphaNumeric(260);
+        let contenido = Faker.random.alphaNumeric(12);
         await paginaCrearModificarEliminarElemento.crearOModificarElemento(
             titulo,
             contenido
