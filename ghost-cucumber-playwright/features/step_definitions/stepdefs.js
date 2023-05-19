@@ -7,7 +7,7 @@ const {
     Before,
     setDefaultTimeout,
 } = require("@cucumber/cucumber");
-const { chromium } = require("@playwright/test");
+const {chromium} = require("@playwright/test");
 const PaginaAutenticacion = require("../objects/pagina-autenticacion");
 const PaginaSitio = require("../objects/pagina-sitio");
 const PaginaUsuario = require("../objects/pagina-usuario");
@@ -16,6 +16,7 @@ const PaginaCrearModificarEliminarElemento = require("../objects/pagina-crear-mo
 const PaginaListarEtiquetas = require("../objects/pagina-listar-etiquetas");
 const PaginaCrearModificarEliminarEtiqueta = require("../objects/pagina-crear-modificar-eliminar-etiqueta");
 const fs = require("fs");
+const {faker, fa} = require('@faker-js/faker');
 
 setDefaultTimeout(100 * 1000);
 
@@ -33,15 +34,49 @@ let paginaUsuario;
 let nombreEscenario;
 let paso = 1;
 
-const identificacion = "ce.ardilav1@uniandes.edu.co";
-const contrasena = "**wWzf*zPLD8";
-const version = "4.44.0";
-const baseUrl = "http://localhost:3002/";
+const identificacion = "ma.martinezp123@uniandes.edu.co";
+const contrasena = "c-L56kBCAyPxU_u";
+const version = "3.41.1";
+const baseUrl = "http://localhost:2368/";
 
 const directorioReportes = `reportes/${version}/`;
 
+const usuarioDinamicoFacebookError = {
+    fullName: faker.person.fullName(),
+    slug: faker.person.firstName(),
+    email: "ma.martinezp123@uniandes.edu.co",
+    location: faker.location.country(),
+    website: faker.internet.url(),
+    facebookProfile: faker.lorem.words(3),
+    twitterProfile: faker.person.firstName(),
+    bio: faker.lorem.words(15)
+};
+
+const usuarioDinamicoTwitterError = {
+    fullName: faker.person.fullName(),
+    slug: faker.person.firstName(),
+    email: "ma.martinezp123@uniandes.edu.co",
+    location: faker.location.country(),
+    website: faker.internet.url(),
+    facebookProfile: faker.person.firstName(),
+    twitterProfile: faker.lorem.words(3),
+    bio: faker.lorem.words(15)
+};
+
+const usuarioDinamicoWebsiteError = {
+    fullName: faker.person.fullName(),
+    slug: faker.person.firstName(),
+    email: "ma.martinezp123@uniandes.edu.co",
+    location: faker.location.country(),
+    website: faker.lorem.words(3),
+    facebookProfile: faker.person.firstName(),
+    twitterProfile: faker.person.firstName(),
+    bio: faker.lorem.words(15)
+};
+
+
 Before(async function (escenario) {
-    browser = await chromium.launch({ headless: false, workers: 1 });
+    browser = await chromium.launch({headless: false, workers: 1});
     driver = await browser.newPage();
     await driver.goto(`${baseUrl}ghost/#/site`);
     paginaAutenticacion = new PaginaAutenticacion(driver);
@@ -123,7 +158,7 @@ Then("se genera un nuevo token", async function () {
 });
 
 When(
-    "diligencia con {string} {string} y {string} el formulario actualizar contrasena",
+    "diligencia con {string} {string} y {string} y hace click en el boton cambiar contraseña",
     async function (
         contrasenaAntigua,
         contrasenaNueva,
@@ -157,6 +192,24 @@ Then(
             "Your new passwords do not match",
             (await paginaUsuario.obtenerErrorCampo(2)).trim()
         );
+        driver.screenshot().then((image) => saveScreenshot(image));
+    }
+);
+
+Then(
+    "se indica al usuario que hay errores en el formulario de actualizar la contraseña",
+    async function () {
+        await sleep();
+        assert.equal(true, await paginaUsuario.esErrorCambioContraseña());
+        driver.screenshot().then((image) => saveScreenshot(image));
+    }
+);
+
+Then(
+    "se indica al usuario que no hay errores en el formulario de actualizar la contraseña",
+    async function () {
+        await sleep();
+        assert.equal(false, await paginaUsuario.esErrorCambioContraseña());
         driver.screenshot().then((image) => saveScreenshot(image));
     }
 );
@@ -391,6 +444,107 @@ Then("se indica al usuario que el nombre es muy largo", async function () {
     driver.screenshot().then((image) => saveScreenshot(image));
 });
 
+When(
+    "diligencia con {string} {string} {string} {string} {string} {string} {string} y {string} y hace click en el boton guardar", async function (fullName, slug, email, location, website, facebookProfile, twitterProfile, bio) {
+        await sleep();
+        await paginaUsuario.cambiarDatos(fullName, slug, email, location, website, facebookProfile, twitterProfile, bio);
+        await paginaUsuario.hacerClickEnGuardar();
+        driver.screenshot().then((image) => saveScreenshot(image));
+    }
+);
+
+When(
+    "diligencia con {string} {string} {string} {string} {string} {string} {string} y {string}", async function (fullName, slug, email, location, website, facebookProfile, twitterProfile, bio) {
+        await sleep();
+        await paginaUsuario.cambiarDatos(fullName, slug, email, location, website, facebookProfile, twitterProfile, bio);
+        driver.screenshot().then((image) => saveScreenshot(image));
+    }
+);
+
+When(
+    "diligencia con usuario dinamico facebook", async function () {
+        await sleep();
+        await paginaUsuario.cambiarDatos(usuarioDinamicoFacebookError.fullName, usuarioDinamicoFacebookError.slug, usuarioDinamicoFacebookError.email, usuarioDinamicoFacebookError.location, usuarioDinamicoFacebookError.website, usuarioDinamicoFacebookError.facebookProfile, usuarioDinamicoFacebookError.twitterProfile, usuarioDinamicoFacebookError.bio);
+        driver.screenshot().then((image) => saveScreenshot(image));
+    }
+);
+
+When(
+    "diligencia con usuario dinamico twitter", async function () {
+        await sleep();
+        await paginaUsuario.cambiarDatos(usuarioDinamicoTwitterError.fullName, usuarioDinamicoTwitterError.slug, usuarioDinamicoTwitterError.email, usuarioDinamicoTwitterError.location, usuarioDinamicoTwitterError.website, usuarioDinamicoTwitterError.facebookProfile, usuarioDinamicoTwitterError.twitterProfile, usuarioDinamicoTwitterError.bio);
+        driver.screenshot().then((image) => saveScreenshot(image));
+    }
+);
+
+When(
+    "diligencia con usuario dinamico website", async function () {
+        await sleep();
+        await paginaUsuario.cambiarDatos(usuarioDinamicoWebsiteError.fullName, usuarioDinamicoWebsiteError.slug, usuarioDinamicoWebsiteError.email, usuarioDinamicoWebsiteError.location, usuarioDinamicoWebsiteError.website, usuarioDinamicoWebsiteError.facebookProfile, usuarioDinamicoWebsiteError.twitterProfile, usuarioDinamicoWebsiteError.bio);
+        driver.screenshot().then((image) => saveScreenshot(image));
+    }
+);
+
+Then("se indica al usuario que no hay errores en el formulario", async function () {
+    await sleep();
+    assert.equal(false, await paginaUsuario.esError());
+    driver.screenshot().then((image) => saveScreenshot(image));
+});
+
+Then("se indica al usuario que hay errores en el formulario", async function () {
+    await sleep();
+    assert.equal(true, await paginaUsuario.esError());
+    driver.screenshot().then((image) => saveScreenshot(image));
+});
+
+Given("un usuario con correo electronico aleatorio", async function () {
+    await sleep();
+    await paginaAutenticacion.diligenciarDatosAutenticacion(faker.internet.email(), faker.internet.password());
+    driver.screenshot().then((image) => saveScreenshot(image));
+});
+
+Given("un usuario con correo electronico aleatorio invalido", async function () {
+    await sleep();
+    await paginaAutenticacion.diligenciarDatosAutenticacion(faker.lorem.words(3), faker.internet.password());
+    driver.screenshot().then((image) => saveScreenshot(image));
+});
+
+When(
+    "hace click para recuperar contraseña", async function () {
+        await sleep();
+        await paginaAutenticacion.hacerClickEnRecuperarContrasena();
+        driver.screenshot().then((image) => saveScreenshot(image));
+    }
+);
+
+Then(
+    "se indica al usuario que hay errores en el formulario de autenticacion", async function () {
+        await sleep();
+        assert.equal(true, await paginaAutenticacion.esError());
+        driver.screenshot().then((image) => saveScreenshot(image));
+    }
+);
+
+Given("un usuario con {string} y {string}", async function (correoElectronico, contrasena) {
+    await sleep();
+    await paginaAutenticacion.diligenciarDatosAutenticacion(correoElectronico, contrasena);
+    driver.screenshot().then((image) => saveScreenshot(image));
+});
+
+When(
+    "hace click para autenticarse", async function () {
+        await sleep();
+        await paginaAutenticacion.hacerClickEnAutenticar();
+        driver.screenshot().then((image) => saveScreenshot(image));
+    }
+);
+
+Then("el usuario ya esta autenticado", async function () {
+    await sleep();
+    assert.equal(`${baseUrl}ghost/#/site`, await driver.url());
+    driver.screenshot().then((image) => saveScreenshot(image));
+});
+
 After(async function () {
     await sleep();
     await driver.close();
@@ -404,7 +558,7 @@ function sleep() {
 function saveScreenshot(image) {
     sleep();
     if (!fs.existsSync(directorioReportes + nombreEscenario)) {
-        fs.mkdirSync(directorioReportes + nombreEscenario, { recursive: true });
+        fs.mkdirSync(directorioReportes + nombreEscenario, {recursive: true});
     }
     fs.writeFileSync(
         directorioReportes + nombreEscenario + "/" + paso + ".png",
