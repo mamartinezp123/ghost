@@ -479,6 +479,23 @@ Then("el boton de creacion no esta en la pagina", async function() {
     assert(paginaCrearModificarEliminarElemento.botonMenuNoExiste(), false);
 })
 
+When(
+    "crea un draft con titulo de {string} y contenido de {string}",
+    async function (tituloLenght, contenidoLenght) {
+        tituloLenght = parseInt(tituloLenght, 10);
+        contenidoLenght = parseInt(contenidoLenght, 10);
+        await sleep();
+        let titulo = faker.lorem.characters(tituloLenght);
+        let contenido = faker.lorem.characters(contenidoLenght);
+        await paginaCrearModificarEliminarElemento.crearOModificarElementoConError(
+            titulo,
+            contenido
+        );
+        driver.screenshot().then((image) => saveScreenshot(image));
+    }
+);
+
+
 After(async function () {
     await sleep();
     await driver.close();
