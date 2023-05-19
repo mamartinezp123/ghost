@@ -1,5 +1,5 @@
 const assert = require("assert");
-const { Faker } = require('@faker-js/faker');
+const { Faker } = require("@faker-js/faker");
 
 const {
     Given,
@@ -211,8 +211,8 @@ When(
         tituloLenght = parseInt(tituloLenght, 10);
         contenidoLenght = parseInt(contenidoLenght, 10);
         await sleep();
-        let titulo = Faker.random.alphaNumeric(260);
-        let contenido = Faker.random.alphaNumeric(12);
+        let titulo = Faker.person.fullName();
+        let contenido = Faker.person.firstName(12);
         await paginaCrearModificarEliminarElemento.crearOModificarElemento(
             titulo,
             contenido
