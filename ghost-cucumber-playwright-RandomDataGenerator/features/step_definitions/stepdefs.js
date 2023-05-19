@@ -36,6 +36,7 @@ let paginaUsuario;
 let nombreEscenario;
 let titulode254;
 let paso = 1;
+let titulode255;
 
 const identificacion = "of.garzon2662@gmail.com";
 const contrasena = 'P3~uJc?FwhXq"-2';
@@ -485,15 +486,27 @@ When(
         tituloLenght = parseInt(tituloLenght, 10);
         contenidoLenght = parseInt(contenidoLenght, 10);
         await sleep();
-        let titulo = faker.lorem.characters(tituloLenght);
-        let contenido = faker.lorem.characters(contenidoLenght);
+        titulode255 = faker.string.alpha(tituloLenght);
+        let contenido = faker.string.alpha(contenidoLenght);
         await paginaCrearModificarEliminarElemento.crearOModificarElementoConError(
-            titulo,
+            titulode255,
             contenido
         );
+        await sleep();
         driver.screenshot().then((image) => saveScreenshot(image));
     }
 );
+
+Then('el draft de 255 caracteres esta en la lista y tiene estado publicado', async function () {
+    await sleep();
+        assert.equal(
+            "PUBLISHED".toLowerCase(),
+            (await paginaListarElementos.obtenerEstadoElementoPorTitulo(titulode255))
+                .trim()
+                .toLowerCase()
+        );
+        driver.screenshot().then((image) => saveScreenshot(image));
+    });
 
 
 After(async function () {
