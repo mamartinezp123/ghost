@@ -126,3 +126,18 @@ Scenario: Crear un draft con un titulo igual a 300 caracteres
     Examples:
         | titulo | contenido |
         |In the vast realm of possibilities, lies the canvas of your dreams. Paint it with vibrant hues of passion, determination, and resilience. Embrace the challenges, learn from failures, and let each experience shape your journey. Remember, you hold the power to create a masterpiece called life.| Este es el contenido de este particular Draft|
+
+
+
+
+Scenario: Crear post con title de cero caracteres y post de cero caracteres
+    Given un usuario autenticado
+    When hace click en el link publicaciones
+    And hace click en el boton nuevo
+    And diligencia con "" y "" y envia el formulario crear - modificar elemento
+    And confirmar publicacion del elemento
+    And va a la pagina de publicaciones
+    Then el elemento "(Untitled)" esta en la lista y tiene estado publicado
+
+
+

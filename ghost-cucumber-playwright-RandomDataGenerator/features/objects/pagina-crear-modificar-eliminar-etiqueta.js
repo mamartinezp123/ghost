@@ -13,6 +13,16 @@ class PaginaCrearModificarEliminarEtiqueta {
         this.driver = driver;
     }
 
+    async botonSaveNoExiste() {
+        try {
+            await this.driver.locator(this.crearModificarBy);
+            return true;
+        } catch (error) {
+            return false;
+        }
+        
+    }
+
     async crearOModificarEtiqueta(nombre, descripcion) {
         await this.driver.locator(this.nombreBy).fill(nombre);
         await this.driver.locator(this.descripcionBy).fill(descripcion);
@@ -36,6 +46,11 @@ class PaginaCrearModificarEliminarEtiqueta {
     async obtenerError() {
         let errores = await this.driver.$$(this.errorBy);
         return await errores[0].textContent();
+    }
+
+    async borrarCampoNombre() {
+        let campoNombre = await this.driver.locator(this.nombreBy);
+        await campoNombre.clear();
     }
 
     async sleep() {

@@ -38,6 +38,7 @@ let nombreEscenario;
 let titulode254;
 let paso = 1;
 let titulode255;
+let nombreEtiqueta;
 
 const identificacion = "of.garzon2662@gmail.com";
 const contrasena = 'P3~uJc?FwhXq"-2';
@@ -415,6 +416,24 @@ When(
     }
 );
 
+When(
+    "diligencia con titulo de {int} caracteres y {string} y envia el formulario crear - modificar etiqueta",
+    async function (nameLength, descripcion) {
+        await sleep();
+        nombreEtiqueta = faker.string.alpha(nameLength)
+        await paginaCrearModificarEliminarEtiqueta.crearOModificarEtiqueta(
+            nombreEtiqueta,
+            descripcion
+        );
+
+        if (nameLength >191) {
+            
+        }
+        
+        driver.screenshot().then((image) => saveScreenshot(image));
+    }
+);
+
 
 When('crea un draft con titulo {string} y contenido {string}', async function (titulo, contenido) {
     await sleep();
@@ -428,11 +447,11 @@ When("va a la pagina de etiquetas", async function () {
     driver.screenshot().then((image) => saveScreenshot(image));
 });
 
-Then("la etiqueta {string} esta en la lista", async function (nombre) {
+Then("la etiqueta esta en la lista", async function () {
     await sleep();
     assert.equal(
         true,
-        await paginaListarEtiquetas.estaEtiquetaPorNombre(nombre)
+        await paginaListarEtiquetas.estaEtiquetaPorNombre(nombreEtiqueta)
     );
     driver.screenshot().then((image) => saveScreenshot(image));
 });
@@ -448,6 +467,17 @@ When("hace click en el boton eliminar etiqueta", async function () {
     await paginaCrearModificarEliminarEtiqueta.hacerClickEnEliminar();
     driver.screenshot().then((image) => saveScreenshot(image));
 });
+
+When("borro contenido del texto del nombre", async function () {
+    await sleep();
+    await paginaCrearModificarEliminarEtiqueta.borrarCampoNombre();
+    driver.screenshot().then((image) => saveScreenshot(image));
+});
+
+Then("el boton save ya no existe", async function() {
+    await sleep();
+    assert(paginaCrearModificarEliminarEtiqueta.botonSaveNoExiste(), false);
+})
 
 When(
     "hace click en el boton eliminar etiqueta del mensaje de confirmacion",
