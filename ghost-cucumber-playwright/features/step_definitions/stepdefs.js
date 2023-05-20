@@ -16,7 +16,7 @@ const PaginaCrearModificarEliminarElemento = require("../objects/pagina-crear-mo
 const PaginaListarEtiquetas = require("../objects/pagina-listar-etiquetas");
 const PaginaCrearModificarEliminarEtiqueta = require("../objects/pagina-crear-modificar-eliminar-etiqueta");
 const fs = require("fs");
-const {faker, fa} = require('@faker-js/faker');
+const {faker} = require('@faker-js/faker');
 
 setDefaultTimeout(100 * 1000);
 
@@ -32,7 +32,10 @@ let paginaListarEtiquetas;
 let paginaCrearModificarEliminarEtiqueta;
 let paginaUsuario;
 let nombreEscenario;
+let titulode254;
 let paso = 1;
+let titulode255;
+let nombreEtiqueta;
 
 const identificacion = "ma.martinezp123@uniandes.edu.co";
 const contrasena = "c-L56kBCAyPxU_u";
@@ -256,6 +259,78 @@ When("hace click en el boton nuevo", async function () {
 });
 
 When(
+    "diligencia con titulo de {string} y cuerpo de {string} y envia el formulario crear - modificar elemento",
+    async function (tituloLenght, contenidoLenght) {
+        tituloLenght = parseInt(tituloLenght, 10);
+        contenidoLenght = parseInt(contenidoLenght, 10);
+        await sleep();
+        let titulo = faker.string.alpha(tituloLenght);
+        let contenido = faker.string.alpha(contenidoLenght);
+        await paginaCrearModificarEliminarElemento.crearOModificarElementoConError(
+            titulo,
+            contenido
+        );
+        driver.screenshot().then((image) => saveScreenshot(image));
+    }
+);
+
+When(
+    "diligencia con titulo de 254 y cuerpo de 12 y envia el formulario crear - modificar elemento",
+    async function () {
+        await sleep();
+        titulode254 = faker.string.alpha(254);
+        let contenido = faker.string.alpha(12);
+        await paginaCrearModificarEliminarElemento.crearOModificarElemento(
+            titulode254,
+            contenido
+        );
+        driver.screenshot().then((image) => saveScreenshot(image));
+    }
+);
+
+Then(
+    "el elemento con titulo de 254 caracteres esta en la lista y tiene estado publicado",
+    async function () {
+        await sleep();
+        assert.equal(
+            "PUBLISHED".toLowerCase(),
+            (await paginaListarElementos.obtenerEstadoElementoPorTitulo(titulode254))
+                .trim()
+                .toLowerCase()
+        );
+        driver.screenshot().then((image) => saveScreenshot(image));
+    }
+);
+
+When(
+    "diligencia con titulo de 255 y cuerpo de 12 y envia el formulario crear - modificar elemento",
+    async function () {
+        await sleep();
+        titulode255 = faker.string.alpha(255);
+        let contenido = faker.string.alpha(12);
+        await paginaCrearModificarEliminarElemento.crearOModificarElemento(
+            titulode255,
+            contenido
+        );
+        driver.screenshot().then((image) => saveScreenshot(image));
+    }
+);
+
+Then(
+    "el elemento con titulo de 255 caracteres esta en la lista y tiene estado publicado",
+    async function () {
+        await sleep();
+        assert.equal(
+            "PUBLISHED".toLowerCase(),
+            (await paginaListarElementos.obtenerEstadoElementoPorTitulo(titulode255))
+                .trim()
+                .toLowerCase()
+        );
+        driver.screenshot().then((image) => saveScreenshot(image));
+    }
+);
+
+When(
     "diligencia con {string} y {string} y envia el formulario crear - modificar elemento",
     async function (titulo, contenido) {
         await sleep();
@@ -390,17 +465,70 @@ When(
     }
 );
 
+When(
+    "diligencia con titulo de {int} caracteres y {string} y envia el formulario crear - modificar etiqueta",
+    async function (nameLength, descripcion) {
+        await sleep();
+        nombreEtiqueta = faker.string.alpha(nameLength)
+        await paginaCrearModificarEliminarEtiqueta.crearOModificarEtiqueta(
+            nombreEtiqueta,
+            descripcion
+        );
+        driver.screenshot().then((image) => saveScreenshot(image));
+    }
+);
+
+When(
+    "diligencia con titulo de {int} caracteres y slug {string} y descripcion {string} y envia el formulario crear - modificar etiqueta",
+    async function (nameLength, slug, descripcion) {
+        await sleep();
+        nombreEtiqueta = faker.string.alpha(nameLength)
+        await paginaCrearModificarEliminarEtiqueta.crearOModificarEtiquetaConSlug(
+            nombreEtiqueta,
+            descripcion,
+            slug
+        );
+
+        driver.screenshot().then((image) => saveScreenshot(image));
+    }
+);
+
+
+When(
+    "diligencia con titulo de {int} caracteres y con slug de {int} caracteres y descripcion de {int} caracteres y envia el formulario crear - modificar etiqueta",
+    async function (nameLength, slugLenght, descripcionLenght) {
+        await sleep();
+        nombreEtiqueta = faker.string.alpha(nameLength);
+        slug = faker.string.alpha(slugLenght);
+        descripcion = faker.string.alpha(descripcionLenght);
+        await paginaCrearModificarEliminarEtiqueta.crearOModificarEtiquetaConSlug(
+            nombreEtiqueta,
+            descripcion,
+            slug
+        );
+
+        driver.screenshot().then((image) => saveScreenshot(image));
+    }
+);
+
+
+When('crea un draft con titulo {string} y contenido {string}', async function (titulo, contenido) {
+    await sleep();
+    await paginaCrearModificarEliminarElemento.crearDraft(titulo, contenido);
+    driver.screenshot().then((image) => saveScreenshot(image));
+});
+
 When("va a la pagina de etiquetas", async function () {
     await sleep();
     await paginaCrearModificarEliminarEtiqueta.listarEtiquetas();
     driver.screenshot().then((image) => saveScreenshot(image));
 });
 
-Then("la etiqueta {string} esta en la lista", async function (nombre) {
+Then("la etiqueta esta en la lista", async function () {
     await sleep();
     assert.equal(
         true,
-        await paginaListarEtiquetas.estaEtiquetaPorNombre(nombre)
+        await paginaListarEtiquetas.estaEtiquetaPorNombre(nombreEtiqueta)
     );
     driver.screenshot().then((image) => saveScreenshot(image));
 });
@@ -416,6 +544,17 @@ When("hace click en el boton eliminar etiqueta", async function () {
     await paginaCrearModificarEliminarEtiqueta.hacerClickEnEliminar();
     driver.screenshot().then((image) => saveScreenshot(image));
 });
+
+When("borro contenido del texto del nombre", async function () {
+    await sleep();
+    await paginaCrearModificarEliminarEtiqueta.borrarCampoNombre();
+    driver.screenshot().then((image) => saveScreenshot(image));
+});
+
+Then("el boton save ya no existe", async function () {
+    await sleep();
+    assert(paginaCrearModificarEliminarEtiqueta.botonSaveNoExiste(), false);
+})
 
 When(
     "hace click en el boton eliminar etiqueta del mensaje de confirmacion",
@@ -544,6 +683,73 @@ Then("el usuario ya esta autenticado", async function () {
     assert.equal(`${baseUrl}ghost/#/site`, await driver.url());
     driver.screenshot().then((image) => saveScreenshot(image));
 });
+
+When("se indica al usuario que el nombre no puede estar vacio", async function () {
+    await sleep();
+    assert.equal(
+        "You must specify a name for the tag.",
+        (await paginaCrearModificarEliminarEtiqueta.obtenerError()).trim()
+    );
+    driver.screenshot().then((image) => saveScreenshot(image));
+});
+
+Then("el boton de creacion no esta en la pagina", async function () {
+    await sleep();
+    assert(paginaCrearModificarEliminarElemento.botonMenuNoExiste(), false);
+})
+
+When(
+    "crea un draft con titulo de {string} y contenido de {string}",
+    async function (tituloLenght, contenidoLenght) {
+        tituloLenght = parseInt(tituloLenght, 10);
+        contenidoLenght = parseInt(contenidoLenght, 10);
+        await sleep();
+        titulode255 = faker.string.alpha(tituloLenght);
+        let contenido = faker.string.alpha(contenidoLenght);
+        await paginaCrearModificarEliminarElemento.crearOModificarElementoConError(
+            titulode255,
+            contenido
+        );
+        await sleep();
+        driver.screenshot().then((image) => saveScreenshot(image));
+    }
+);
+
+Then('el draft de 255 caracteres esta en la lista y tiene estado publicado', async function () {
+    await sleep();
+    assert.equal(
+        "PUBLISHED".toLowerCase(),
+        (await paginaListarElementos.obtenerEstadoElementoPorTitulo(titulode255))
+            .trim()
+            .toLowerCase()
+    );
+    driver.screenshot().then((image) => saveScreenshot(image));
+});
+
+Then('el draft con titulo {string} esta en la lista y tiene estado draft', async function (titulo) {
+    await sleep();
+    assert.notEqual(
+        "DRAFT".toLowerCase(),
+        (await paginaListarElementos.obtenerEstadoElementoPorTitulo(titulo))
+            .trim()
+            .toLowerCase()
+    );
+    driver.screenshot().then((image) => saveScreenshot(image));
+});
+
+When('da click en Leave para volver a pagina de lista de posts', async function () {
+    await sleep();
+    await paginaCrearModificarEliminarElemento.hacerClickEnConfirmarEliminar();
+});
+
+Then('el draft con titulo {string} no esta creado', async function (titulo) {
+    await sleep();
+    assert.equal(
+        false,
+        await paginaListarElementos.estaElementoPorTitulo(titulo)
+    );
+    driver.screenshot().then((image) => saveScreenshot(image));
+})
 
 After(async function () {
     await sleep();

@@ -2,6 +2,7 @@ class PaginaCrearModificarEliminarEtiqueta {
 
     driver;
     nombreBy = "css=input[tabindex='1']";
+    slugBy = "css=input[tabindex='2']";
     descripcionBy = "css=textarea[tabindex='3']";
     crearModificarBy = "css=.view-actions button";
     etiquetasBy = "css=.gh-canvas-title a";
@@ -13,9 +14,26 @@ class PaginaCrearModificarEliminarEtiqueta {
         this.driver = driver;
     }
 
+    async botonSaveNoExiste() {
+        try {
+            await this.driver.locator(this.crearModificarBy);
+            return true;
+        } catch (error) {
+            return false;
+        }
+
+    }
+
     async crearOModificarEtiqueta(nombre, descripcion) {
         await this.driver.locator(this.nombreBy).fill(nombre);
         await this.driver.locator(this.descripcionBy).fill(descripcion);
+        await this.driver.locator(this.crearModificarBy).click();
+    }
+
+    async crearOModificarEtiquetaConSlug(nombre, descripcion, slug) {
+        await this.driver.locator(this.nombreBy).fill(nombre);
+        await this.driver.locator(this.descripcionBy).fill(descripcion);
+        await this.driver.locator(this.slugBy).fill(slug);
         await this.driver.locator(this.crearModificarBy).click();
     }
 
@@ -36,6 +54,11 @@ class PaginaCrearModificarEliminarEtiqueta {
     async obtenerError() {
         let errores = await this.driver.$$(this.errorBy);
         return await errores[0].textContent();
+    }
+
+    async borrarCampoNombre() {
+        let campoNombre = await this.driver.locator(this.nombreBy);
+        await campoNombre.clear();
     }
 
     async sleep() {

@@ -16,11 +16,32 @@ class PaginaCrearModificarEliminarElemento {
         this.driver = driver;
     }
 
+    async botonMenuNoExiste() {
+        try {
+            await this.driver.locator(this.menuBy);
+            return true;
+        } catch (error) {
+            return false;
+        }
+
+    }
+
+    async crearDraft(titulo, contenido) {
+        await this.driver.locator(this.tituloBy).fill(titulo);
+        await this.driver.locator(this.contenidoBy).fill(contenido);
+        await this.driver.locator(this.elementosBy).click();
+    }
+
     async crearOModificarElemento(titulo, contenido) {
         await this.driver.locator(this.tituloBy).fill(titulo);
         await this.driver.locator(this.contenidoBy).fill(contenido);
         await this.driver.locator(this.menuBy).click();
         await this.driver.locator(this.crearModificarBy).click();
+    }
+
+    async crearOModificarElementoConError(titulo, contenido) {
+        await this.driver.locator(this.tituloBy).fill(titulo);
+        await this.driver.locator(this.contenidoBy).fill(contenido);
     }
 
     async crearOModificarBorradorElemento(titulo, contenido) {
