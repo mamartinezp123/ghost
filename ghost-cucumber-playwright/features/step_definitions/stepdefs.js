@@ -17,6 +17,7 @@ const PaginaListarEtiquetas = require("../objects/pagina-listar-etiquetas");
 const PaginaCrearModificarEliminarEtiqueta = require("../objects/pagina-crear-modificar-eliminar-etiqueta");
 const fs = require("fs");
 const {faker, fa} = require('@faker-js/faker');
+const { identificacion, contrasena, version, baseUrl } = require('../../../config');
 
 setDefaultTimeout(100 * 1000);
 
@@ -33,11 +34,6 @@ let paginaCrearModificarEliminarEtiqueta;
 let paginaUsuario;
 let nombreEscenario;
 let paso = 1;
-
-const identificacion = "ma.martinezp123@uniandes.edu.co";
-const contrasena = "c-L56kBCAyPxU_u";
-const version = "3.41.1";
-const baseUrl = "http://localhost:2368/";
 
 const directorioReportes = `reportes/${version}/`;
 

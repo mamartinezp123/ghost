@@ -20,6 +20,8 @@ const PaginaCrearModificarEliminarEtiqueta = require("../objects/pagina-crear-mo
 const fs = require("fs");
 const { parse } = require("path");
 const { SlowBuffer } = require("buffer");
+const { identificacion, contrasena, version, baseUrl } = require('../../../config');
+
 
 setDefaultTimeout(100 * 1000);
 
@@ -40,10 +42,6 @@ let paso = 1;
 let titulode255;
 let nombreEtiqueta;
 
-const identificacion = "of.garzon2662@gmail.com";
-const contrasena = 'P3~uJc?FwhXq"-2';
-const version = "3.41.1";
-const baseUrl = "http://localhost:3001/";
 
 const directorioReportes = `reportes/${version}/`;
 
