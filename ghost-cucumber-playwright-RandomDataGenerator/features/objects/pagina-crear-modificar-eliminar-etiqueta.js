@@ -2,6 +2,7 @@ class PaginaCrearModificarEliminarEtiqueta {
 
     driver;
     nombreBy = "css=input[tabindex='1']";
+    slugBy = "css=input[tabindex='2']";
     descripcionBy = "css=textarea[tabindex='3']";
     crearModificarBy = "css=.view-actions button";
     etiquetasBy = "css=.gh-canvas-title a";
@@ -26,6 +27,13 @@ class PaginaCrearModificarEliminarEtiqueta {
     async crearOModificarEtiqueta(nombre, descripcion) {
         await this.driver.locator(this.nombreBy).fill(nombre);
         await this.driver.locator(this.descripcionBy).fill(descripcion);
+        await this.driver.locator(this.crearModificarBy).click();
+    }
+
+    async crearOModificarEtiquetaConSlug(nombre, descripcion, slug) {
+        await this.driver.locator(this.nombreBy).fill(nombre);
+        await this.driver.locator(this.descripcionBy).fill(descripcion);
+        await this.driver.locator(this.slugBy).fill(slug);
         await this.driver.locator(this.crearModificarBy).click();
     }
 

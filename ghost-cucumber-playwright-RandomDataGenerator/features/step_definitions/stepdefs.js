@@ -425,14 +425,43 @@ When(
             nombreEtiqueta,
             descripcion
         );
+        driver.screenshot().then((image) => saveScreenshot(image));
+    }
+);
 
-        if (nameLength >191) {
-            
-        }
+When(
+    "diligencia con titulo de {int} caracteres y slug {string} y descripcion {string} y envia el formulario crear - modificar etiqueta",
+    async function (nameLength, slug, descripcion) {
+        await sleep();
+        nombreEtiqueta = faker.string.alpha(nameLength)
+        await paginaCrearModificarEliminarEtiqueta.crearOModificarEtiquetaConSlug(
+            nombreEtiqueta,
+            descripcion,
+            slug
+        );
         
         driver.screenshot().then((image) => saveScreenshot(image));
     }
 );
+
+
+When(
+    "diligencia con titulo de {int} caracteres y con slug de {int} caracteres y descripcion de {int} caracteres y envia el formulario crear - modificar etiqueta",
+    async function (nameLength, slugLenght, descripcionLenght) {
+        await sleep();
+        nombreEtiqueta = faker.string.alpha(nameLength);
+        slug = faker.string.alpha(slugLenght);
+        descripcion = faker.string.alpha(descripcionLenght);
+        await paginaCrearModificarEliminarEtiqueta.crearOModificarEtiquetaConSlug(
+            nombreEtiqueta,
+            descripcion,
+            slug
+        );
+        
+        driver.screenshot().then((image) => saveScreenshot(image));
+    }
+);
+
 
 
 When('crea un draft con titulo {string} y contenido {string}', async function (titulo, contenido) {
@@ -501,6 +530,15 @@ Then("se indica al usuario que el nombre es muy largo", async function () {
     await sleep();
     assert.equal(
         "Tag names cannot be longer than 191 characters.",
+        (await paginaCrearModificarEliminarEtiqueta.obtenerError()).trim()
+    );
+    driver.screenshot().then((image) => saveScreenshot(image));
+});
+
+When("se indica al usuario que el nombre no puede estar vacio", async function () {
+    await sleep();
+    assert.equal(
+        "You must specify a name for the tag.",
         (await paginaCrearModificarEliminarEtiqueta.obtenerError()).trim()
     );
     driver.screenshot().then((image) => saveScreenshot(image));
