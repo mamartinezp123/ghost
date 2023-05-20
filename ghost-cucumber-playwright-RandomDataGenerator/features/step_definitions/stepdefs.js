@@ -19,6 +19,7 @@ const PaginaListarEtiquetas = require("../objects/pagina-listar-etiquetas");
 const PaginaCrearModificarEliminarEtiqueta = require("../objects/pagina-crear-modificar-eliminar-etiqueta");
 const fs = require("fs");
 const { parse } = require("path");
+const { SlowBuffer } = require("buffer");
 
 setDefaultTimeout(100 * 1000);
 
@@ -507,6 +508,20 @@ Then('el draft de 255 caracteres esta en la lista y tiene estado publicado', asy
         );
         driver.screenshot().then((image) => saveScreenshot(image));
     });
+
+When('da click en Leave para volver a pagina de lista de posts', async function() {
+    await sleep();
+    await paginaCrearModificarEliminarElemento.hacerClickEnConfirmarEliminar();
+});
+
+Then ('el draft con titulo {string} no esta creado', async function(titulo) {
+    await sleep();
+    assert.equal(
+        false,
+        await paginaListarElementos.estaElementoPorTitulo(titulo)
+    );
+    driver.screenshot().then((image) => saveScreenshot(image));
+})
 
 
 After(async function () {

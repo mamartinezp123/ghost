@@ -11,7 +11,6 @@ class PaginaCrearModificarEliminarElemento {
     confirmarCrearBy = "css=.modal-footer .gh-btn-black";
     confirmarEliminarBy = "css=.modal-footer .gh-btn-red";
     errorBy = "css=article > div.gh-alert-content";
-    postsBy = "#4332";
 
     constructor(driver) {
         this.driver = driver;
