@@ -1,6 +1,7 @@
 Feature: Publicaciones
     Funcionalidades crear, listar, modificar y eliminar del modulo publicaciones
 
+
 Scenario: Crear post con titulo mayor a 255 caracteres
     Given un usuario autenticado
     When hace click en el link publicaciones
@@ -90,4 +91,38 @@ Scenario: Crear un draft con un titulo igual a 256 caracteres
         |Life is a journey filled with ups and downs, challenges and triumphs. Embrace each moment, learn from the past, and keep moving forward with determination. Believe in yourself, chase your dreams, and never give up. The road may be long, but the destination is worth it. You have the power to create your own story.| Este es el contenido de este particular Draft|
 
 
+Scenario: Crear un draft con un titulo igual a 254 caracteres
+    Given un usuario autenticado
+    When hace click en el link publicaciones
+    And hace click en el boton nuevo
+    And crea un draft con titulo "<titulo>" y contenido "<contenido>"
+    And confirmar publicacion del elemento
+    Then el draft con titulo "<titulo>" esta en la lista y tiene estado draft
+    Examples:
+        | titulo | contenido |
+        |Life is a series of moments that shape our journey. Each step, every decision, adds meaning to our story. Embrace the challenges, savor the triumphs, and cherish the connections along the way.| Este es el contenido de este particular Draft|
 
+Scenario: Crear un draft con un titulo igual a 200 caracteres
+    Given un usuario autenticado
+    When hace click en el link publicaciones
+    And hace click en el boton nuevo
+    And crea un draft con titulo "<titulo>" y contenido "<contenido>"
+    And confirmar publicacion del elemento
+    Then el draft con titulo "<titulo>" esta en la lista y tiene estado draft
+    Examples:
+        | titulo | contenido |
+        |Explore new horizons, embrace challenges, and let your determination lead you to remarkable achievements. Believe in yourself and never stop growing.| Este es el contenido de este particular Draft|
+
+
+
+Scenario: Crear un draft con un titulo igual a 300 caracteres
+    Given un usuario autenticado
+    When hace click en el link publicaciones
+    And hace click en el boton nuevo
+    And crea un draft con titulo "<titulo>" y contenido "<contenido>"
+    And confirmar publicacion del elemento
+    And da click en Leave para volver a pagina de lista de posts
+    Then el draft con titulo "<titulo>" no esta creado
+    Examples:
+        | titulo | contenido |
+        |In the vast realm of possibilities, lies the canvas of your dreams. Paint it with vibrant hues of passion, determination, and resilience. Embrace the challenges, learn from failures, and let each experience shape your journey. Remember, you hold the power to create a masterpiece called life.| Este es el contenido de este particular Draft|

@@ -509,6 +509,17 @@ Then('el draft de 255 caracteres esta en la lista y tiene estado publicado', asy
         driver.screenshot().then((image) => saveScreenshot(image));
     });
 
+Then('el draft con titulo {string} esta en la lista y tiene estado draft', async function (titulo) {
+        await sleep();
+            assert.notEqual(
+                "DRAFT".toLowerCase(),
+                (await paginaListarElementos.obtenerEstadoElementoPorTitulo(titulo))
+                    .trim()
+                    .toLowerCase()
+            );
+            driver.screenshot().then((image) => saveScreenshot(image));
+        });
+
 When('da click en Leave para volver a pagina de lista de posts', async function() {
     await sleep();
     await paginaCrearModificarEliminarElemento.hacerClickEnConfirmarEliminar();
