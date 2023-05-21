@@ -44,3 +44,8 @@ Thumbs.db
 
 # Reportes
 /reportes
+
+# Carpetas anteriores
+/KrakenTests
+/ghost-cucumber-playwright
+/ghost-cucumber-selenium
