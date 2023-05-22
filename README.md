@@ -41,6 +41,7 @@ Para generar datos aleatorios definimos escenarios en los cuales sin importar el
 1. Nodejs
 2. Npm
 3. Google Chrome
+4. Ghost 3.41.1
 ## A tener en cuenta
 Debe actualizar las constantes usuario y contrasena en el archivo __*stepdef.js*__ en las lineas 40 y 41 respoectivamente, por credenciales validas que tenga en su ambiente local para acceder a Ghost.
 
