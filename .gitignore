@@ -7,7 +7,7 @@
 /bazel-out
 
 # Node
-/node_modules
+*/node_modules
 npm-debug.log
 yarn-error.log
 
@@ -43,9 +43,4 @@ testem.log
 Thumbs.db
 
 # Reportes
-/reportes
-
-# Carpetas anteriores
-/KrakenTests
-/ghost-cucumber-playwright
-/ghost-cucumber-selenium
+*/reportes
