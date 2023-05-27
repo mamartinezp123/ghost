@@ -22,7 +22,7 @@
 #### Cucumber
 
 
-### Visual Regression Test
+### [Visual Regression Test](https://github.com/mamartinezp123/ghost/tree/ea9d4f854e18a3abc11f3fbce5c366ca6a62fe7e/vrt)
 
 ## Ventajas - Desventajas
 ### [Kraken](https://github.com/mamartinezp123/ghost/wiki/Pruebas-E2E-con-Kraken)
