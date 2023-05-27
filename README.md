@@ -6,7 +6,9 @@
 3. Esteban Ardila
 2. Fernando Garzon
 
-## Estrategias de generacion de datos usadas y algunos ejemplos
+## Estrategias de Pruebas
+
+Documento
 
 ### Pool de datos a-priori
 
