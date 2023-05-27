@@ -92,22 +92,14 @@
 - Modificar contraseña de usuario con contrasena insegura
 - Modificar contraseña de usuario con contrasena vacia
 
-# Pros y contras de Selenium
+# Pros
+1. Soporte multi-navegador
+2. Lenguajes de programación compatibles: Pudimos desarrollar las pruebas con Javascript sin problema.
 
-## Pros
+# Contras
 
-- La herramienta es muy facil de usar, de hecho la aprendimos a utilizar en una semana.
-- Es soportada por diferentes lenguajes de programación.
-- Utiliza diferentes navegadores para realizar las prueba.
-- Es compatible con muchos sistemas operativos como Windows, Mac, Linux...
-- Interactúa fácilmente con la aplicación web.
-- La configuracion es sencilla.
-
-## Contras
-
-- En algunos casos se deben generar un timeout para que las pruebas no se estanquen y generen un error inesperado por no
-  encontrar algun elemento no renderizado.
-- No tiene una herramienta para generar un reporte integrada.
+1. Curva de aprendizaje inicial: Playwright puede requerir un tiempo de aprendizaje para familiarizarse con los conceptos y la sintaxis específica de la biblioteca.
+2. Dependencia adicional: Al utilizar Playwright, se agrega una dependencia adicional al proyecto, lo que puede aumentar la complejidad y los posibles conflictos de versión con otras bibliotecas o frameworks.
 
 # Como ejecutar las pruebas
 ## Prerequisitos
