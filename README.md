@@ -16,11 +16,12 @@
 ### [Generación de Datos Aleatorios](https://github.com/mamartinezp123/ghost/tree/ac4b3ad0324c906dc4a12e8affec081da80c5eaf/Generaci%C3%B3n%20de%20Datos%20-%20Playwright)
 
 ### E2E
-[Kraken]
-[Playwright]
-[Selenium]
+[Kraken](https://github.com/mamartinezp123/ghost/tree/master/e2e/KrakenTests)
+[Playwright](https://github.com/mamartinezp123/ghost/tree/master/e2e/ghost-cucumber-playwright)
+[Selenium](https://github.com/mamartinezp123/ghost/tree/master/e2e/ghost-cucumber-selenium)
 
-### [Visual Regression Test]()
+### Visual Regression Test
+[Carpeta con resultados](https://github.com/mamartinezp123/ghost/tree/master/vrt)
 
 ## Ventajas - Desventajas
 [Kraken](https://github.com/mamartinezp123/ghost/wiki/Pruebas-E2E-con-Kraken)
