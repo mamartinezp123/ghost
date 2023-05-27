@@ -10,7 +10,7 @@
 
 [Documento](https://github.com/mamartinezp123/ghost/blob/master/Estrategia%20de%20Pruebas.pdf)
 
-### Generación de Datos Aleatorios
+### [Generación de Datos Aleatorios](https://github.com/mamartinezp123/ghost/tree/ac4b3ad0324c906dc4a12e8affec081da80c5eaf/Generaci%C3%B3n%20de%20Datos%20-%20Playwright)
 
 ### E2E
 #### Kraken
