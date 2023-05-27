@@ -1,0 +1,13 @@
+{
+  "url": "http://localhost:2368/ghost/#/signin",
+  "headless": false,
+  "depthLevels": 4,
+  "inputValues": true,
+  "viewportHeight": 1080,
+  "viewportWidth": 1920,
+  "values": {
+    "ember8": "ma.martinezp123@uniandes.edu.co",
+    "ember10": "c-L56kBCAyPxU_u"
+  },
+  "browsers": ["chromium"]
+}

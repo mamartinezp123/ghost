@@ -8,10 +8,11 @@
 
 ## Estrategias de Pruebas
 
-[Documento](https://github.com/mamartinezp123/ghost/blob/master/Estrategia%20de%20Pruebas.pdf)
+[Documento](https://github.com/mamartinezp123/ghost/blob/master/documentos/Estrategia%20de%20Pruebas.pdf)
 
 ### Pruebas exploratorias
-[Formato]()
+[Formato](https://github.com/mamartinezp123/ghost/blob/master/documentos/pruebas-exploratorias-xlsx)
+[Rippers - Ripuppet](https://github.com/mamartinezp123/ghost/tree/master/ripuppet)
 
 ### [Generación de Datos Aleatorios](https://github.com/mamartinezp123/ghost/tree/ac4b3ad0324c906dc4a12e8affec081da80c5eaf/Generaci%C3%B3n%20de%20Datos%20-%20Playwright)
 
