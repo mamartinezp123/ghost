@@ -112,8 +112,7 @@ Debe actualizar las constantes usuario y contrasena en el archivo __*stepdef.js*
 ## Pasos
 1. Luego de descargar una copia del proyecto dirijase al directorio root del mismo
 2. Ingrese el comando __*npm install*__ para descargar las dependencias.
-3. Ingrese el comando __*npm test ./features*__ para ejecutar los escenarios de pruebas. Obtendra un resultado como el siguiente
-![img.png](img.png)
+3. Ingrese el comando __*npm test ./features*__ para ejecutar los escenarios de pruebas.
 
 __Nota:__ Si tiene algun error por la version de chromedriver descargue la version adecuada en (https://chromedriver.chromium.org/downloads) y actulice el archivo en la carpeta del proyecto. Recuerde mantener el nombre chromedriver.exe
 
