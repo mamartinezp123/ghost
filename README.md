@@ -10,26 +10,24 @@
 
 [Documento](https://github.com/mamartinezp123/ghost/blob/master/Estrategia%20de%20Pruebas.pdf)
 
+### Pruebas exploratorias
+[Formato]()
+
 ### [Generación de Datos Aleatorios](https://github.com/mamartinezp123/ghost/tree/ac4b3ad0324c906dc4a12e8affec081da80c5eaf/Generaci%C3%B3n%20de%20Datos%20-%20Playwright)
 
 ### E2E
-#### Kraken
+[Kraken]
+[Playwright]
+[Selenium]
 
-#### Playwright
-
-#### Selenium
-
-#### Cucumber
-
-
-### [Visual Regression Test](https://github.com/mamartinezp123/ghost/tree/ea9d4f854e18a3abc11f3fbce5c366ca6a62fe7e/vrt)
+### [Visual Regression Test]()
 
 ## Ventajas - Desventajas
-### [Kraken](https://github.com/mamartinezp123/ghost/wiki/Pruebas-E2E-con-Kraken)
-### [Playwright](https://github.com/mamartinezp123/ghost/wiki/Playwright:-Pros-y-Contras)
-### [Selenium](https://github.com/mamartinezp123/ghost/wiki/Pruebas-E2E-con-Selenium)
-### [Backstop](https://github.com/mamartinezp123/ghost/wiki/Pruebas-de-regresi%C3%B3n-visual-con-Backstop)
-### [ResembleJS](https://github.com/mamartinezp123/ghost/wiki/Pruebas-de-regresi%C3%B3n-visual-con-Resemble)
+[Kraken](https://github.com/mamartinezp123/ghost/wiki/Pruebas-E2E-con-Kraken)
+[Playwright](https://github.com/mamartinezp123/ghost/wiki/Playwright:-Pros-y-Contras)
+[Selenium](https://github.com/mamartinezp123/ghost/wiki/Pruebas-E2E-con-Selenium)
+[Backstop](https://github.com/mamartinezp123/ghost/wiki/Pruebas-de-regresi%C3%B3n-visual-con-Backstop)
+[ResembleJS](https://github.com/mamartinezp123/ghost/wiki/Pruebas-de-regresi%C3%B3n-visual-con-Resemble)
 
 
 
