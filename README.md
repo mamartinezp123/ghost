@@ -1,24 +1,20 @@
-# ghost
-Pruebas automatizadas de software - Entrega Semana 7
+# Entrega Final: Estrategia de Pruebas
 
-# Integrantes
+## Integrantes
 
 1. Alejandro Martinez
+3. Esteban Ardila
 2. Fernando Garzon
 
-# Importante
+## Estrategias de generacion de datos usadas y algunos ejemplos
 
-Por temas personales **Esteban Ardila** no pudo ser parte de la entrega de esta semana por tal razón solo se entregan 67 escenarios de prueba, por favor, calificar unicamente para dos integrantes del equipo. 
-
-# Estrategias de generacion de datos usadas y algunos ejemplos
-
-## Pool de datos a-priori
+### Pool de datos a-priori
 
 Como nosotros utilizamos Gherkin (Cucumber) para nuestros escenarios de pruebas utilizamos Scenario outlines con Examples.
 
 ![img.png](img.png)
 
-## Pool de datos (pseudo) aleatorio dinámico
+### Pool de datos (pseudo) aleatorio dinámico
 
 Para generar datos dinamicos generamos entidades completas con ayuda de Faker como se muestra a cotinuacion (No se modifico el dato email, ya que este es necesario para la autenticación exitosa):
 
@@ -60,4 +56,4 @@ _**En caso de necesitar acceso al repositorio utilizar los siguientes datos usua
 
 Esperamos disfruten calificando este entretenido repositorio.
 
-Muchas Gracias. 
+Muchas gracias.
