@@ -10,7 +10,7 @@
 
 [Documento](https://github.com/mamartinezp123/ghost/blob/master/documentos/Estrategia%20de%20Pruebas.pdf)
 
-[Video](#)
+[Video](https://www.youtube.com/watch?v=j9oKBbx8I3I)
 
 ### Pruebas exploratorias
 
