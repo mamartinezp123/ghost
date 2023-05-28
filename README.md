@@ -13,6 +13,7 @@
 ### Pruebas exploratorias
 
 [Formato](https://github.com/mamartinezp123/ghost/blob/master/documentos/inventario-pruebas-exploratorias.xlsx)
+
 [Rippers - Ripuppet](https://github.com/mamartinezp123/ghost/tree/master/ripuppet)
 
 ### [Generación de Datos Aleatorios](https://github.com/mamartinezp123/ghost/tree/ac4b3ad0324c906dc4a12e8affec081da80c5eaf/Generaci%C3%B3n%20de%20Datos%20-%20Playwright)
