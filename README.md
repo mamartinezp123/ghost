@@ -47,6 +47,11 @@
 
 [RIPuppet](https://github.com/mamartinezp123/ghost/wiki/Pruebas-con-RIPuppet)
 
+
+## Instrucciones para correr las pruebas
+
+En cada uno de los folders de este repositorio se encuentra en archivo README.md, con las instrucciones para correr cada una de las distintas pruebas.
+
 -----
 Esperamos disfruten calificando este entretenido repositorio.
 
